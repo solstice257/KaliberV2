@@ -14,7 +14,7 @@ namespace Kaliber.Repository
 
         private readonly IConfiguration configuration; 
 
-        public RegisterRepositiory( IConfiguration config )
+        public RegisterRepositiory(IConfiguration config)
         {
             this.configuration = config;
         }
