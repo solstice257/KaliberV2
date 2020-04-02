@@ -15,12 +15,13 @@ namespace Kaliber.Controllers
     public class RegisterController : Controller
     {
         IConfiguration configuration;
-
+        RegisterRepositiory _RegisRepo;
         public RegisterController(IConfiguration config)
         {
             this.configuration = config;
+            _RegisRepo = new RegisterRepositiory(configuration);
         }
-        private RegisterRepositiory _RegisRepo = new RegisterRepositiory(configuration);
+        
         // GET: /<controller>/
         
         public IActionResult Index()

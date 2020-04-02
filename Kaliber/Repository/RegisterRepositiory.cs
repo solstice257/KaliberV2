@@ -11,12 +11,14 @@ namespace Kaliber.Repository
 {
     internal class RegisterRepositiory
     {
-
+        int ID = 2;
+        string user = "User";
         private readonly IConfiguration configuration; 
 
         public RegisterRepositiory(IConfiguration config)
         {
             this.configuration = config;
+
         }
 
         public void AddUsers(string username, string password, string email)
@@ -26,9 +28,12 @@ namespace Kaliber.Repository
             SqlConnection connection = new SqlConnection(connectionstring);
 
             connection.Open();
-
-            string sql = $"INSERT INTO Users VALUES {username}, {password}, {email}";
-            SqlCommand com = new SqlCommand(sql);
+            SqlCommand com = connection.CreateCommand();
+            com.CommandText = "INSERT INTO Users(Username, Email, Password, Type) VALUES (@Username, @Email, @Password, @Type)";
+            com.Parameters.AddWithValue("Username", username);
+            com.Parameters.AddWithValue("Email", email);
+            com.Parameters.AddWithValue("Password", password);
+            com.Parameters.AddWithValue("Type", user);
             com.ExecuteNonQuery();
 
             connection.Close();
