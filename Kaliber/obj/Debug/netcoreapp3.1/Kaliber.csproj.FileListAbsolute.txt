@@ -284,3 +284,4 @@ C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\Kaliber\
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.RazorTargetAssemblyInfo.cs
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.Views.pdb
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.csproj.CopyComplete
+C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs

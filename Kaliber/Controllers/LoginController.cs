@@ -7,23 +7,17 @@ using Kaliber.Repository;
 using Kaliber.Models;
 using Microsoft.Extensions.Configuration;
 
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace Kaliber.Controllers
 {
-    public class RegisterController : Controller
+    public class LoginController : Controller
     {
         IConfiguration configuration;
-        RegisterRepositiory _RegisRepo;
-        public RegisterController(IConfiguration config)
+        LoginRepository _LoginRepo;
+        public LoginController(IConfiguration config)
         {
             this.configuration = config;
-            _RegisRepo = new RegisterRepositiory(configuration);
+            _LoginRepo = new LoginRepository(configuration);
         }
-        
-        // GET: /<controller>/
-        
         public IActionResult Index()
         {
             return View();
@@ -32,8 +26,10 @@ namespace Kaliber.Controllers
         [HttpPost]
         public ActionResult Index(User user)
         {
-            _RegisRepo.AddUsers(user);
+            _LoginRepo.Login(user);
             return View();
         }
     }
+
+
 }

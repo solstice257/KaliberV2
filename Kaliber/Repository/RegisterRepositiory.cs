@@ -7,21 +7,20 @@ using System.Threading.Tasks;
 using Kaliber.Models;
 
 
+
 namespace Kaliber.Repository
 {
-    internal class RegisterRepositiory
+    class RegisterRepositiory
     {
-        int ID = 2;
-        string user = "User";
+        string User = "User";
         private readonly IConfiguration configuration; 
 
         public RegisterRepositiory(IConfiguration config)
         {
             this.configuration = config;
-
         }
 
-        public void AddUsers(string username, string password, string email)
+        public void AddUsers(User user)
         {
             string connectionstring = configuration.GetConnectionString("KaliberConnStr");
 
@@ -30,10 +29,10 @@ namespace Kaliber.Repository
             connection.Open();
             SqlCommand com = connection.CreateCommand();
             com.CommandText = "INSERT INTO Users(Username, Email, Password, Type) VALUES (@Username, @Email, @Password, @Type)";
-            com.Parameters.AddWithValue("Username", username);
-            com.Parameters.AddWithValue("Email", email);
-            com.Parameters.AddWithValue("Password", password);
-            com.Parameters.AddWithValue("Type", user);
+            com.Parameters.AddWithValue("Username", user.Username);
+            com.Parameters.AddWithValue("Email", user.Email);
+            com.Parameters.AddWithValue("Password", user.Password);
+            com.Parameters.AddWithValue("Type", User);
             com.ExecuteNonQuery();
 
             connection.Close();
