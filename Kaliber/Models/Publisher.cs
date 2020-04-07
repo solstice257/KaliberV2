@@ -7,8 +7,8 @@ namespace Kaliber
 {
     public class Publisher
     {
-        private int Publisher_ID;
-        private string Name;
+        public int Publisher_ID;
+        public string Name;
 
         public Publisher(int Publisher_ID, string Name)
         {

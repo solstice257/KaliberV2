@@ -27,13 +27,13 @@ namespace Kaliber.Repository
             SqlConnection connection = new SqlConnection(connectionstring);
 
             connection.Open();
-            SqlCommand com = connection.CreateCommand();
-            com.CommandText = "INSERT INTO Users(Username, Email, Password, Type) VALUES (@Username, @Email, @Password, @Type)";
-            com.Parameters.AddWithValue("Username", user.Username);
-            com.Parameters.AddWithValue("Email", user.Email);
-            com.Parameters.AddWithValue("Password", user.Password);
-            com.Parameters.AddWithValue("Type", User);
-            com.ExecuteNonQuery();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "INSERT INTO Users(Username, Email, Password, Type) VALUES (@Username, @Email, @Password, @Type)";
+            cmd.Parameters.AddWithValue("Username", user.Username);
+            cmd.Parameters.AddWithValue("Email", user.Email);
+            cmd.Parameters.AddWithValue("Password", user.Password);
+            cmd.Parameters.AddWithValue("Type", User);
+            cmd.ExecuteNonQuery();
 
             connection.Close();
         }

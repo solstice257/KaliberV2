@@ -7,12 +7,12 @@ namespace Kaliber
 {
     public class Author
     {
-        private int AuthorID;
-        private string Firstname;
-        private string Lastname;
-        private string City;
-        private int Year_of_birth;
-        private int Year_of_death;
+        public int AuthorID;
+        public string Firstname;
+        public string Lastname;
+        public string City;
+        public int Year_of_birth;
+        public int Year_of_death;
 
         public Author(int AuthorID, string Firstname, string Lastname, string City, int Year_of_birth, int Year_of_death)
         {

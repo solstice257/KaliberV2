@@ -42,6 +42,11 @@ namespace Kaliber.Controllers
             return View();
         }
 
+        public IActionResult Userpage()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
