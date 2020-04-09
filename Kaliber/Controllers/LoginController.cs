@@ -24,10 +24,9 @@ namespace Kaliber.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(User user)
+        public void Index(User user)
         {
             _LoginRepo.Login(user);
-            return View();
         }
     }
 
