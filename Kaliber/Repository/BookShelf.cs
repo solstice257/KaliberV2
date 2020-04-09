@@ -10,12 +10,17 @@ using System.IO;
 
 namespace Kaliber.Repository
 {
+
     public class BookShelf
     {
+        string connectionstring;
+        SqlConnection connection;
 
         List<Book> BorrowedBooks;
-        public BookShelf()
+        public BookShelf(IConfiguration configuration)
         {
+            connectionstring = configuration.GetConnectionString("KaliberConnStr");
+            connection = new SqlConnection(connectionstring);
             BorrowedBooks = new List<Book>();
         }
 
@@ -34,45 +39,41 @@ namespace Kaliber.Repository
             BorrowedBooks.Remove(book);
         }
 
-        public int GetAuthorID(Book book, IConfiguration configuration)
+        //public int GetAuthorID(Book book, IConfiguration configuration)
+        //{
+        //    string connectionstring = configuration.GetConnectionString("KaliberConnStr");
+
+        //    SqlConnection connection = new SqlConnection(connectionstring);
+
+        //    connection.Open();
+        //    SqlCommand cmd = connection.CreateCommand();
+        //    cmd.CommandText = $"SELECT AuthorID FROM Authors WHERE Firstname = @firstname AND Lastname = @lastname";
+        //    cmd.Parameters.AddWithValue("@firstname", book.author.Firstname);
+        //    cmd.Parameters.AddWithValue("@lastname", book.author.Lastname);
+        //    int AuthorID = (int)cmd.ExecuteScalar();
+        //    cmd.Dispose();
+        //    connection.Close();
+        //    return AuthorID;
+        //}
+
+        //public int GetPublisherID(Book book, IConfiguration configuration)
+        //{
+        //    string connectionstring = configuration.GetConnectionString("KaliberConnStr");
+
+        //    SqlConnection connection = new SqlConnection(connectionstring);
+
+        //    connection.Open();
+        //    SqlCommand cmd = connection.CreateCommand();
+        //    cmd.CommandText = $"SELECT PublisherID FROM Publisher WHERE Name = @name";
+        //    cmd.Parameters.AddWithValue("@name", book.publisher.Name);
+        //    int PublisherID = (int)cmd.ExecuteScalar();
+        //    cmd.Dispose();
+        //    connection.Close();
+        //    return PublisherID;
+        //}
+
+        public void AddBook(Book book)
         {
-            string connectionstring = configuration.GetConnectionString("KaliberConnStr");
-
-            SqlConnection connection = new SqlConnection(connectionstring);
-
-            connection.Open();
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"SELECT AuthorID FROM Authors WHERE Firstname = @firstname AND Lastname = @lastname";
-            cmd.Parameters.AddWithValue("@firstname", book.author.Firstname);
-            cmd.Parameters.AddWithValue("@lastname", book.author.Lastname);
-            int AuthorID = (int)cmd.ExecuteScalar();
-            cmd.Dispose();
-            connection.Close();
-            return AuthorID;
-        }
-
-        public int GetPublisherID(Book book, IConfiguration configuration)
-        {
-            string connectionstring = configuration.GetConnectionString("KaliberConnStr");
-
-            SqlConnection connection = new SqlConnection(connectionstring);
-
-            connection.Open();
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"SELECT PublisherID FROM Publisher WHERE Name = @name";
-            cmd.Parameters.AddWithValue("@name", book.publisher.Name);
-            int PublisherID = (int)cmd.ExecuteScalar();
-            cmd.Dispose();
-            connection.Close();
-            return PublisherID;
-        }
-
-        public void AddBook(Book book, IConfiguration configuration)
-        {
-            string connectionstring = configuration.GetConnectionString("KaliberConnStr");
-
-            SqlConnection connection = new SqlConnection(connectionstring);
-
             connection.Open();
 
             SqlCommand cmd = connection.CreateCommand();
@@ -90,8 +91,49 @@ namespace Kaliber.Repository
             connection.Close();
         }
 
+        public void DeleteBook(Book book)
+        {
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "DELETE FROM Ebooks(AuthorFN, AuthorLN, Title, Subtitle, Category, Year_Of_Publication) VALUES (@AuthorFN, @AuthorLN, @Title, @Subtitle, @Category, @Year_Of_Publication)";
+            cmd.Parameters.AddWithValue("@AuthorFN", book.author.Firstname);
+            cmd.Parameters.AddWithValue("@AuthorLN", book.author.Lastname);
+            cmd.Parameters.AddWithValue("@Title", book.Title);
+            cmd.Parameters.AddWithValue("@Subtitle", book.Subtitle);
+            cmd.Parameters.AddWithValue("@Category", book.Category);
+            cmd.Parameters.AddWithValue("@Year_Of_Publication", book.Year_Of_Publication);
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
 
+            connection.Close();
+        }
 
+        public void UpdateBook(Book book) //WIP NEEDS FIX
+        {
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "UPDATE Ebooks(Title, AuthorLN, Title, Subtitle, Category, Year_Of_Publication) VALUES (@AuthorFN, @AuthorLN, @Title, @Subtitle, @Category, @Year_Of_Publication)";
+            cmd.Parameters.AddWithValue("@AuthorFN", book.author.Firstname);
+            cmd.Parameters.AddWithValue("@AuthorLN", book.author.Lastname);
+            cmd.Parameters.AddWithValue("@Title", book.Title);
+            cmd.Parameters.AddWithValue("@Subtitle", book.Subtitle);
+            cmd.Parameters.AddWithValue("@Category", book.Category);
+            cmd.Parameters.AddWithValue("@Year_Of_Publication", book.Year_Of_Publication);
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
 
+            connection.Close();
+        }
+
+        public List<Book> SearchBook(string Element, List<Book> books)
+        {
+            List<Book> WantedBooks = new List<Book>();
+            foreach (Book book in books)
+            {
+                if (book.Equals(Element))
+                {
+                    WantedBooks.Add(book);
+                }
+            }
+            return WantedBooks;
+        }
     }
 }

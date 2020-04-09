@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\Kaliber.csproj": {}
+    "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\Kaliber.csproj": {
+    "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\Kaliber.csproj",
+        "projectUniqueName": "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj",
         "projectName": "Kaliber",
-        "projectPath": "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\Kaliber.csproj",
+        "projectPath": "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj",
         "packagesPath": "C:\\Users\\Sem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\obj\\",
+        "outputPath": "D:\\Git\\KaliberV2\\Kaliber\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\Sem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -45,21 +40,25 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[3.1.3, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[3.1.3, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.1, )"
+              "version": "[3.1.2, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.1, )"
+            },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[4.4.1, )"
             }
           },
           "imports": [
@@ -80,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

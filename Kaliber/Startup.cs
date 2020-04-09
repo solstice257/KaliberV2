@@ -10,20 +10,33 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration.Json;
-
-
+using System.Data.SqlClient;
+using Kaliber.Models;
 
 namespace Kaliber
 {
     public class Startup
-    { 
-        public IConfiguration Configuration { get; }
+    {
+        public List<Book> books { get; private set; }
+        public IConfiguration configuration { get; }
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.configuration = configuration;
+            // GetAllBooks();
         }
 
-       
+        public void GetAllBooks()
+        {
+            string connectionstring = configuration.GetConnectionString("KaliberConnStr");
+
+            SqlConnection connection = new SqlConnection(connectionstring);
+
+            connection.Open();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"SELECT * FROM Ebooks";
+            books = (List<Book>)cmd.ExecuteScalar();
+            cmd.Dispose();
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
