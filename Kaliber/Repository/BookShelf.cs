@@ -24,9 +24,10 @@ namespace Kaliber.Repository
             BorrowedBooks = new List<Book>();
         }
 
-        public void BorrowBook(Book book)
+        public List<Book> BorrowBook(Book book)
         {
             BorrowedBooks.Add(book);
+            return BorrowedBooks;
         }
 
         public void ReadBook(Book book)

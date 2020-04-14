@@ -1,21 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj": {}
+    "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\Kaliber.csproj": {}
   },
   "projects": {
-    "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj": {
+    "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\Kaliber.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj",
+        "projectUniqueName": "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\Kaliber.csproj",
         "projectName": "Kaliber",
-        "projectPath": "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj",
+        "projectPath": "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\Kaliber.csproj",
         "packagesPath": "C:\\Users\\Sem\\.nuget\\packages\\",
-        "outputPath": "D:\\Git\\KaliberV2\\Kaliber\\obj\\",
+        "outputPath": "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\Sem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -79,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

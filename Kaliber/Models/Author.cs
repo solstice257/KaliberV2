@@ -9,6 +9,7 @@ namespace Kaliber
     {
         public int AuthorID;
         public string Firstname;
+        public string Preposition;
         public string Lastname;
         public string City;
         public int Year_of_birth;
