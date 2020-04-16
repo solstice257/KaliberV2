@@ -7,13 +7,7 @@ namespace Kaliber
 {
     public class Publisher
     {
-        public int Publisher_ID;
-        public string Name;
-
-        public Publisher(int Publisher_ID, string Name)
-        {
-            this.Publisher_ID = Publisher_ID;
-            this.Name = Name;
-        }
+        public int Publisher_ID { get; set; }
+        public string Name { get; set; }
     }
 }

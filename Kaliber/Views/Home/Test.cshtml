@@ -5,7 +5,26 @@
 
 @model Kaliber.Models.Book
 
-<!DOCTYPE html>
+
+    <form method="post" action="/Book/SaveImagePath" enctype="multipart/form-data">
+        <label> ISBN </label> <input type="text" name="ISBN" /> 
+        <label> Title </label> <input type="text" name="Title" /> <br />
+        <label> Subtitle </label> <input type="text" name="Subtitle" /> <br />
+        <label> AuthorFN </label> <input type="text" name="AuthorFN" /> <br />
+        <label> AuthorPP </label> <input type="text" name="AuthorPP" /> <br />
+        <label> AuthorLN </label> <input type="text" name="AuthorLN" /> <br />
+        <label> Publisher </label> <input type="text" name="Publisher" /> <br />
+        <label> Category </label> <input type="text" name="Category" /> <br />
+        <label> Year_Of_Publication </label> <input type="text" name="Year_Of_Publication" /> <br />
+        <label> Cover_Photo </label> <input type="file" name="Cover_Photo" /> <br />
+        <input type="submit" value="Go" />
+    </form>
+
+
+
+
+
+@*<!DOCTYPE html>
 
 <html>
 <head>
@@ -16,7 +35,7 @@
 </head>
 <body>
 
-    @using (Html.BeginForm("Index", "Book", FormMethod.Post))
+    @using (Html.BeginForm("SaveImagePath", "Book", FormMethod.Post, new { enctype = "multiplart/form-data" }))
     {
     <table cellpadding="0" cellspacing="0">
         <tr>
@@ -67,33 +86,23 @@
         <tr>
             <td>Categorie: </td>
             <td>
-                @Html.TextBoxFor(m => m.Title)
+                @Html.TextBoxFor(m => m.Category)
             </td>
         </tr>
         <tr>
-            <td>Voornaam auteur: </td>
+            <td>Jaar van Uitgave: </td>
             <td>
-                @Html.TextBoxFor(m => m.Cover_Picture)
+                @Html.TextBoxFor(m => m.Year_Of_Publication)
             </td>
         </tr>
         <tr>
             <td>Cover afbeelding: </td>
             <td>
-                @Html.TextBoxFor(m => m.author.Firstname)
+                <input type="file" name="Image"/>
                 <br />
-                <input type="file" name="Image" multiple/>
-                <br />
-
             </td>
         </tr>
         <tr>
-            <td>Voornaam auteur: </td>
-            <td>
-                @Html.TextBoxFor(m => m.author.Firstname)
-            </td>
-        </tr>
-        <tr>
-            <td></td>
             <td><input type="submit" value="Submit" /></td>
         </tr>
     </table>
@@ -101,4 +110,4 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
-</html>
+</html>*@

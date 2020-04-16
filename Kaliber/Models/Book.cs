@@ -7,27 +7,14 @@ namespace Kaliber.Models
 {
     public class Book
     {
-        public int ISBN;
-        public string Title;
-        public Author author;
-        public Publisher publisher;
-        public string Subtitle;
-        public string Category;
-        public string Book_Root;
-        public byte[] Cover_Picture;
-        public string Year_Of_Publication;
-
-        public Book(int ISBN, Author author, Publisher publisher, string Title, string Subtitle, string Category, string Book_Root, byte[] Cover_Picture, string Year_Of_Publication)
-        {
-            this.ISBN = ISBN;
-            this.author = author;
-            this.publisher = publisher;
-            this.Title = Title;
-            this.Subtitle = Subtitle;
-            this.Category = Category;
-            this.Book_Root = Book_Root;
-            this.Cover_Picture = Cover_Picture;
-            this.Year_Of_Publication = Year_Of_Publication;
-        }
+        public int ISBN { get; set; }
+        public string Title { get; set; }
+        public Author author { get; set; }
+        public Publisher publisher { get; set; }
+        public string Subtitle { get; set; }
+        public string Category { get; set; }
+        public string Book_Root { get; set; }
+        public byte[] Cover_Picture { get; set; }
+        public string Year_Of_Publication { get; set; }
     }
 }
