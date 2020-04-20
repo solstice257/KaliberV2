@@ -5,9 +5,9 @@
 
 @model Kaliber.Models.Book
 
-
-    <form method="post" action="/Book/SaveImagePath" enctype="multipart/form-data">
-        <label> ISBN </label> <input type="text" name="ISBN" /> 
+<div class=" = text-left">
+    <form method="post" asp-controller="BookController" asp-action="SaveImagePath" enctype="multipart/form-data">
+        <label> ISBN </label> <input type="text" name="ISBN" /> <br />
         <label> Title </label> <input type="text" name="Title" /> <br />
         <label> Subtitle </label> <input type="text" name="Subtitle" /> <br />
         <label> AuthorFN </label> <input type="text" name="AuthorFN" /> <br />
@@ -19,6 +19,7 @@
         <label> Cover_Photo </label> <input type="file" name="Cover_Photo" /> <br />
         <input type="submit" value="Go" />
     </form>
+</div>
 
 
 

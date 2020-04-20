@@ -15,11 +15,11 @@ namespace Kaliber.Controllers
 {
     public class BookController : Controller
     {
-        private readonly IHostingEnvironment he;
+        private readonly IWebHostEnvironment he;
         IConfiguration configuration;
         BookShelf _BookShelf;
 
-        public BookController(IHostingEnvironment e, IConfiguration config)
+        public BookController(IWebHostEnvironment e, IConfiguration config)
         {
             configuration = config;
             _BookShelf = new BookShelf(configuration);
@@ -35,12 +35,17 @@ namespace Kaliber.Controllers
         {
             if (Cover_Photo != null)
             {
-                var filename = Path.Combine(he.WebRootPath, Path.GetFileName(Cover_Photo.FileName));
-                Cover_Photo.CopyTo(new FileStream(filename, FileMode.Create));
+                string filePath = $"{he.WebRootPath}/images/{Cover_Photo.FileName}";
+
+                using (var stream = System.IO.File.Create(filePath))
+                {
+                    Cover_Photo.CopyTo(stream);
+                }
             }
 
             _BookShelf.AddBook(book);
             return View();
+
         }
     }
 }
