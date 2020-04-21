@@ -12,20 +12,21 @@ namespace Kaliber.Repository
     public class LoginRepository
     {
         private readonly IConfiguration configuration;
-
+        string connectionstring;
+        SqlConnection connection;
         public LoginRepository(IConfiguration config)
-        {
-            this.configuration = config;
+        { 
+            this.configuration = config; 
+            connectionstring = configuration.GetConnectionString("KaliberConnStr");
+            connection = new SqlConnection(connectionstring);
         }
 
         public void Login(User user)
         {
-            string connectionstring = configuration.GetConnectionString("KaliberConnStr");
-            string sql = $"SELECT COUNT(*) FROM Users WHERE Username = @username AND Password = @password";
-            SqlConnection connection = new SqlConnection(connectionstring);
             connection.Open();
 
-            SqlCommand cmd = new SqlCommand(sql, connection);
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"SELECT COUNT(*) FROM Users WHERE Username = @username AND Password = @password";
             cmd.Parameters.AddWithValue("@username", user.Username);
             cmd.Parameters.AddWithValue("@password", user.Password);
             int result = (int)cmd.ExecuteScalar();

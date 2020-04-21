@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration.Json;
 using System.Data.SqlClient;
 using Kaliber.Models;
+using Kaliber.Repository;
+using Kaliber.Interfaces;
 
 namespace Kaliber
 {
@@ -38,9 +40,17 @@ namespace Kaliber
             cmd.Dispose();
         }
 
+       
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add framework services.
+            services.AddScoped<IRegisterRepository, RegisterRepositiory>();
+
+            services.AddMvc();
+
+            // Add application services.
+
             services.AddControllersWithViews();
         }
 

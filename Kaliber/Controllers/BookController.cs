@@ -17,12 +17,12 @@ namespace Kaliber.Controllers
     {
         private readonly IWebHostEnvironment he;
         IConfiguration configuration;
-        BookShelf _BookShelf;
+        BookRepository _BookShelf;
 
         public BookController(IWebHostEnvironment e, IConfiguration config)
         {
             configuration = config;
-            _BookShelf = new BookShelf(configuration);
+            _BookShelf = new BookRepository(configuration);
             he = e;
         }
         public IActionResult Index()

@@ -141,7 +141,6 @@ C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\Kaliber S2\kaliber-s2\Kalibe
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\Kaliber S2\kaliber-s2\Kaliber\Kaliber\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\Kaliber S2\kaliber-s2\Kaliber\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Home\Register.cshtml.g.cs
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\Kaliber S2\kaliber-s2\Kaliber\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.csprojAssemblyReference.cache
-C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.csprojAssemblyReference.cache
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\staticwebassets\Kaliber.StaticWebAssets.Manifest.cache
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\staticwebassets\Kaliber.StaticWebAssets.xml
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.MvcApplicationPartsAssemblyInfo.cache
