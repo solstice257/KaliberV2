@@ -35,6 +35,8 @@ namespace Kaliber.Controllers
         {
             if (Cover_Photo != null)
             {
+            //    string path =( he.ContentRootPath;
+
                 string filePath = $"{he.WebRootPath}/images/{Cover_Photo.FileName}";
 
                 using (var stream = System.IO.File.Create(filePath))

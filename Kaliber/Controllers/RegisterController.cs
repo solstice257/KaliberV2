@@ -14,7 +14,7 @@ namespace Kaliber.Controllers
 {
     public class RegisterController : Controller
     {
-        IConfiguration configuration;
+        private readonly IConfiguration configuration;
         RegisterRepositiory _RegisRepo;
         public RegisterController(IConfiguration config)
         {

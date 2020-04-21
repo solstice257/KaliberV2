@@ -1,12 +1,13 @@
 ﻿
 @{
-    ViewData["Title"] = "Test";
+    ViewData["Title"] = "AddBook";
 }
 
 @model Kaliber.Models.Book
 
 <div class=" = text-left">
-    <form method="post" asp-controller="BookController" asp-action="SaveImagePath" enctype="multipart/form-data">
+    <form method="post" asp-controller="Book" asp-action="SaveImagePath" enctype="multipart/form-data">
+
         <label> ISBN </label> <input type="text" name="ISBN" /> <br />
         <label> Title </label> <input type="text" name="Title" /> <br />
         <label> Subtitle </label> <input type="text" name="Subtitle" /> <br />

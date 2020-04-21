@@ -47,7 +47,7 @@ namespace Kaliber.Controllers
             return View();
         }
 
-        public IActionResult Test()
+        public IActionResult AddBook()
         {
             return View();
         }
