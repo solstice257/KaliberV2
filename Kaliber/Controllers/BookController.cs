@@ -9,21 +9,23 @@ using Kaliber.Repository;
 using System.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server;
 using System.IO;
 
 namespace Kaliber.Controllers
 {
     public class BookController : Controller
     {
-        private readonly IWebHostEnvironment he;
+        List<Book> BorrowedBooks;
+        private readonly IWebHostEnvironment env;
         IConfiguration configuration;
-        BookRepository _BookShelf;
+        BookRepository _BookRepo;
 
         public BookController(IWebHostEnvironment e, IConfiguration config)
         {
             configuration = config;
-            _BookShelf = new BookRepository(configuration);
-            he = e;
+            _BookRepo = new BookRepository(configuration);
+            env = e;
         }
         public IActionResult Index()
         {
@@ -31,23 +33,49 @@ namespace Kaliber.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveImagePath(Book book, IFormFile Cover_Photo)
+        public IActionResult AddBook(Book book, IFormFile Cover_Photo)
+        {
+            SaveImagePath(book, Cover_Photo);
+            _BookRepo.GetAllBooks();
+            _BookRepo.AddBook(book);
+            return View();
+        }
+
+        public void SaveImagePath(Book book, IFormFile Cover_Photo)
         {
             if (Cover_Photo != null)
             {
-            //    string path =( he.ContentRootPath;
-
-                string filePath = $"{he.WebRootPath}/images/{Cover_Photo.FileName}";
+                string filePath = $"{env.ContentRootPath}/images/{Cover_Photo.FileName}";
 
                 using (var stream = System.IO.File.Create(filePath))
                 {
                     Cover_Photo.CopyTo(stream);
                 }
+                book.Cover_Picture = $"~/images/{Cover_Photo.FileName}";
+
             }
-
-            _BookShelf.AddBook(book);
-            return View();
-
         }
+
+        public void ReturnBook(Book book)
+        {
+            BorrowedBooks.Remove(book);
+        }
+        public void BorrowBook(Book book)
+        {
+            BorrowedBooks.Add(book);
+        }
+
+        //public List<Book> SearchBook(string SearchElement)
+        //{
+        //    List<Book> WantedBooks = new List<Book>();
+        //    foreach (Book book in books)
+        //    {
+        //        if (book.Equals(Element))
+        //        {
+        //            WantedBooks.Add(book);
+        //        }
+        //    }
+        //    return WantedBooks;
+        //}
     }
 }

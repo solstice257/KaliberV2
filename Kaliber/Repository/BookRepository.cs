@@ -24,20 +24,9 @@ namespace Kaliber.Repository
             BorrowedBooks = new List<Book>();
         }
 
-        public List<Book> BorrowBook(Book book)
-        {
-            BorrowedBooks.Add(book);
-            return BorrowedBooks;
-        }
-
         public void ReadBook(Book book)
         {
             // Path naar book text dunno moet nog uitzoeken
-        }
-
-        public void ReturnBook(Book book)
-        {
-            BorrowedBooks.Remove(book);
         }
 
         //public int GetAuthorID(Book book, IConfiguration configuration)
@@ -94,6 +83,8 @@ namespace Kaliber.Repository
 
         public void DeleteBook(Book book)
         {
+            connection.Open();
+
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandText = "DELETE FROM Ebooks(AuthorFN, AuthorLN, Title, Subtitle, Category, Year_Of_Publication) VALUES (@AuthorFN, @AuthorLN, @Title, @Subtitle, @Category, @Year_Of_Publication)";
             cmd.Parameters.AddWithValue("@AuthorFN", book.author.Firstname);
@@ -110,6 +101,8 @@ namespace Kaliber.Repository
 
         public void UpdateBook(Book book) //WIP NEEDS FIX
         {
+            connection.Open();
+
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandText = "UPDATE Ebooks(Title, AuthorLN, Title, Subtitle, Category, Year_Of_Publication) VALUES (@AuthorFN, @AuthorLN, @Title, @Subtitle, @Category, @Year_Of_Publication)";
             cmd.Parameters.AddWithValue("@AuthorFN", book.author.Firstname);
@@ -124,17 +117,18 @@ namespace Kaliber.Repository
             connection.Close();
         }
 
-        public List<Book> SearchBook(string Element, List<Book> books)
+        public List<Book> GetAllBooks()
         {
-            List<Book> WantedBooks = new List<Book>();
-            foreach (Book book in books)
-            {
-                if (book.Equals(Element))
-                {
-                    WantedBooks.Add(book);
-                }
-            }
-            return WantedBooks;
+            connection.Open();
+
+            string queryString = "SELECT * FROM Ebooks";
+            SqlDataAdapter adapter = new SqlDataAdapter(queryString, connection);
+
+            DataSet books = new DataSet();
+            adapter.Fill(books, "Books");
+
+
+            return BorrowedBooks;
         }
     }
 }

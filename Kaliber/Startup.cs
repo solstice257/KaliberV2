@@ -24,29 +24,13 @@ namespace Kaliber
         public Startup(IConfiguration configuration)
         {
             this.configuration = configuration;
-            // GetAllBooks();
         }
-
-        public void GetAllBooks()
-        {
-            string connectionstring = configuration.GetConnectionString("KaliberConnStr");
-
-            SqlConnection connection = new SqlConnection(connectionstring);
-
-            connection.Open();
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"SELECT * FROM Ebooks";
-            books = (List<Book>)cmd.ExecuteScalar();
-            cmd.Dispose();
-        }
-
-       
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddScoped<IRegisterRepository, RegisterRepositiory>();
-
             services.AddScoped<ILoginRepository, LoginRepository>();
 
             services.AddMvc();
