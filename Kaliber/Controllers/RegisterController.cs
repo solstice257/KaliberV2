@@ -16,13 +16,11 @@ namespace Kaliber.Controllers
     public class RegisterController : Controller
     {
         private readonly IConfiguration configuration;
-        RegisterRepositiory _RegisRepo;
         IRegisterRepository iregisterRepository;
         public RegisterController(IConfiguration config, IRegisterRepository iregisterRepository)
         {
             this.iregisterRepository = iregisterRepository;
             this.configuration = config;
-            _RegisRepo = new RegisterRepositiory(configuration);
         }
 
         // GET: /<controller>/
@@ -33,7 +31,7 @@ namespace Kaliber.Controllers
         }
 
         [HttpPost]
-        public bool AddedUser(User user)
+        public bool Register(User user)
         {
            return iregisterRepository.AddedUser(user);
         }

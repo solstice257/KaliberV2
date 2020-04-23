@@ -47,6 +47,8 @@ namespace Kaliber
             // Add framework services.
             services.AddScoped<IRegisterRepository, RegisterRepositiory>();
 
+            services.AddScoped<ILoginRepository, LoginRepository>();
+
             services.AddMvc();
 
             // Add application services.

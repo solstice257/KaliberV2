@@ -434,3 +434,4 @@ D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.csproj.CoreCompileInput
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Home\Userpage.cshtml.g.cs
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Home\AddBook.cshtml.g.cs
+C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.csprojAssemblyReference.cache

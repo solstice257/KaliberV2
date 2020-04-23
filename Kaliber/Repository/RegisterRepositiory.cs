@@ -24,12 +24,6 @@ namespace Kaliber.Repository
             connection = new SqlConnection(connectionstring);
         }
 
-        public RegisterRepositiory()
-        {
-            connectionstring = configuration.GetConnectionString("KaliberConnStr");
-            connection = new SqlConnection(connectionstring);
-        }
-
         public bool AddedUser(User user)
         {
             try

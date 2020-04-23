@@ -6,17 +6,18 @@ using Microsoft.AspNetCore.Mvc;
 using Kaliber.Repository;
 using Kaliber.Models;
 using Microsoft.Extensions.Configuration;
+using Kaliber.Interfaces;
 
 namespace Kaliber.Controllers
 {
     public class LoginController : Controller
     {
         IConfiguration configuration;
-        LoginRepository _LoginRepo;
-        public LoginController(IConfiguration config)
+        ILoginRepository iloginRepository;
+        public LoginController(IConfiguration config, ILoginRepository iloginRepository)
         {
+            this.iloginRepository = iloginRepository;
             this.configuration = config;
-            _LoginRepo = new LoginRepository(configuration);
         }
         public IActionResult Index()
         {
@@ -24,9 +25,9 @@ namespace Kaliber.Controllers
         }
 
         [HttpPost]
-        public void Index(User user)
+        public bool Login(User user)
         {
-            _LoginRepo.Login(user);
+           return user.LoggedIn = iloginRepository.Exists(user);
         }
     }
 

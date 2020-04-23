@@ -6,10 +6,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Kaliber.Models;
+using Kaliber.Interfaces;
 
 namespace Kaliber.Repository
 {
-    public class LoginRepository
+    public class LoginRepository : ILoginRepository
     {
         private readonly IConfiguration configuration;
         string connectionstring;
@@ -21,7 +22,7 @@ namespace Kaliber.Repository
             connection = new SqlConnection(connectionstring);
         }
 
-        public void Login(User user)
+        public bool Exists(User user)
         {
             connection.Open();
 
@@ -32,8 +33,9 @@ namespace Kaliber.Repository
             int result = (int)cmd.ExecuteScalar();
             if (result == 1)
             {
-                user.LoggedIn = true;
+                return true;
             }
+            return false;
         }
     }
 }

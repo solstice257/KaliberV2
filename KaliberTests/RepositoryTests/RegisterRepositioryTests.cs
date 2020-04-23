@@ -6,7 +6,6 @@ using System.Text;
 using KaliberTests.Stubs;
 using Kaliber.Controllers;
 using Kaliber.Models;
-using Microsoft.Extensions.Configuration;
 
 namespace Kaliber.Repository.Tests
 {
@@ -25,7 +24,7 @@ namespace Kaliber.Repository.Tests
 
             registerRepositoryStub.AddedUserReturnValue = true;
 
-            var registerResult = registerController.AddedUser(user);
+            var registerResult = registerController.Register(user);
 
             Assert.IsTrue(registerResult);
         }
