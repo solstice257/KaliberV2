@@ -9,8 +9,9 @@ namespace Kaliber.Models
 {
     public class Book
     {
+
         [Required]
-        public int ISBN { get; set; }
+        public long ISBN { get; set; }
         [Required]
         public string Title { get; set; }
         public Author author { get; set; }

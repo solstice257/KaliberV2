@@ -119,16 +119,34 @@ namespace Kaliber.Repository
 
         public List<Book> GetAllBooks()
         {
+            List<Book> Books = new List<Book>();
             connection.Open();
-
-            string queryString = "SELECT * FROM Ebooks";
-            SqlDataAdapter adapter = new SqlDataAdapter(queryString, connection);
-
-            DataSet books = new DataSet();
-            adapter.Fill(books, "Books");
-
-
-            return BorrowedBooks;
+            DataTable Table = new DataTable();
+            string queryString = "SELECT ISBN, Title, Firstname, Preposition, Lastname, Name, Subtitle, Category, CoverPhoto, Year_Of_Publication FROM Ebooks JOIN Author ON Ebooks.AuthorID = Author.AuthorID  JOIN Publisher ON Ebooks.PublisherID = Publisher.PublisherID";
+            SqlCommand cmd = new SqlCommand(queryString, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(Table);
+                
+            foreach(DataRow row in Table.Rows)
+            {
+                Book book = new Book();
+                book.author = new Author();
+                book.publisher = new Publisher();
+                string strISBN = row["ISBN"].ToString();
+                book.Title = row["Title"].ToString();
+                book.author.Firstname = row["Firstname"].ToString();
+                book.author.Preposition = row["Preposition"].ToString();
+                book.author.Lastname = row["Lastname"].ToString();
+                book.publisher.Name = row["Name"].ToString();
+                book.Subtitle = row["Subtitle"].ToString();
+                book.Category = row["Category"].ToString();
+                book.Cover_Picture = row["CoverPhoto"].ToString();
+                book.Year_Of_Publication = row["Year_Of_Publication"].ToString();
+                long longISBN = Convert.ToInt64(strISBN);
+                book.ISBN = longISBN;
+                Books.Add(book);
+            }
+            return Books;
         }
     }
 }

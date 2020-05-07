@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Kaliber.Models;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
+using Kaliber.Repository;
 
 namespace Kaliber.Controllers
 {
@@ -15,15 +16,18 @@ namespace Kaliber.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration configuration;
+        BookRepository _BookRepo;
 
         public HomeController(ILogger<HomeController> logger, IConfiguration config)
         {
             _logger = logger;
             this.configuration = config;
+            _BookRepo = new BookRepository(configuration);
         }
 
         public IActionResult Index()
         {
+            _BookRepo.GetAllBooks();
             return View();
         }
 
