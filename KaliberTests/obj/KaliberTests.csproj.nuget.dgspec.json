@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\KaliberTests\\KaliberTests.csproj": {}
+    "D:\\Git\\KaliberV2\\KaliberTests\\KaliberTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\KaliberTests\\KaliberTests.csproj": {
+    "D:\\Git\\KaliberV2\\KaliberTests\\KaliberTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\KaliberTests\\KaliberTests.csproj",
+        "projectUniqueName": "D:\\Git\\KaliberV2\\KaliberTests\\KaliberTests.csproj",
         "projectName": "KaliberTests",
-        "projectPath": "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\KaliberTests\\KaliberTests.csproj",
+        "projectPath": "D:\\Git\\KaliberV2\\KaliberTests\\KaliberTests.csproj",
         "packagesPath": "C:\\Users\\Sem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\KaliberTests\\obj\\",
+        "outputPath": "D:\\Git\\KaliberV2\\KaliberTests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\Sem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -32,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\Kaliber.csproj": {
-                "projectPath": "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\Kaliber.csproj"
+              "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj"
               }
             }
           }
@@ -82,27 +77,22 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\Kaliber.csproj": {
+    "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\Kaliber.csproj",
+        "projectUniqueName": "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj",
         "projectName": "Kaliber",
-        "projectPath": "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\Kaliber.csproj",
+        "projectPath": "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj",
         "packagesPath": "C:\\Users\\Sem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sem\\Desktop\\ICT FONTYS\\Semester 2 Software\\KaliberV2\\KaliberV2\\Kaliber\\obj\\",
+        "outputPath": "D:\\Git\\KaliberV2\\Kaliber\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\Sem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -141,7 +131,7 @@
             },
             "System.Data.SqlClient": {
               "target": "Package",
-              "version": "[4.8.1, )"
+              "version": "[4.6.1, )"
             },
             "bootstrap": {
               "target": "Package",
@@ -166,7 +156,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
