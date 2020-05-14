@@ -41,9 +41,9 @@ namespace Kaliber.Repository
                 connection.Close();
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                Console.WriteLine(e);
                 throw;
             }
             

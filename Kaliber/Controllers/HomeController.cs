@@ -27,7 +27,7 @@ namespace Kaliber.Controllers
 
         public IActionResult Index()
         {
-            _BookRepo.GetAllBooks();
+            //_BookRepo.GetAllBooks();
             return View();
         }
 

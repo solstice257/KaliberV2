@@ -19,11 +19,5 @@ namespace Kaliber.Models
         public string Type { get; set; }
         public bool LoggedIn { get; set; }
 
-        //public User(string Username, string Email, string Password)
-        //{
-        //    this.Username = Username;
-        //    this.Email = Email;
-        //    this.Password = Password;
-        //}
     }
 }
