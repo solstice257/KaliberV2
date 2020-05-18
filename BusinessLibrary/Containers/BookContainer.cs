@@ -17,6 +17,7 @@ namespace BusinessLibrary.Containers
         public BookContainer()
         {
             Books = new List<Book>();
+
         }
 
         public List<Book> GetAllBooks()
