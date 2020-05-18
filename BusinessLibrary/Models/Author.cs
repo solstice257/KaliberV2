@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Interfaces.DTO;
+
 
 namespace BusinessLibrary.Models
 {
@@ -13,15 +15,15 @@ namespace BusinessLibrary.Models
         public string City { get; private set; }
         public int Year_of_birth { get; private set; }
         public int Year_of_death { get; private set; }
-        public Author(int AuthorID, string Firstname, string Preposition, string Lastname, string City, int Year_of_birth, int Year_of_death )
+        public Author(AuthorDTO authorDTO)
         {
-            this.AuthorID = AuthorID;
-            this.Firstname = Firstname;
-            this.Preposition = Preposition;
-            this.Lastname = Lastname;
-            this.City = City;
-            this.Year_of_birth = Year_of_birth;
-            this.Year_of_death = Year_of_death;
+            this.AuthorID = authorDTO.AuthorID;
+            this.Firstname = authorDTO.Firstname;
+            this.Preposition = authorDTO.Preposition;
+            this.Lastname = authorDTO.Lastname;
+            this.City = authorDTO.City;
+            this.Year_of_birth = authorDTO.Year_of_birth;
+            this.Year_of_death = authorDTO.Year_of_death;
         }
     }
     

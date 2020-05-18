@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Numerics;
-using Kaliber;
-using Kaliber.Models;
+using Interfaces;
+using Interfaces.Interface;
+using Interfaces.DTO;
+
+
 
 namespace DatabaseLibrary
 {
-    public class BookDAL
+    public class BookDAL : IBookContainersDAL
     {
         SqlConnection connection;
         public BookDAL()
@@ -16,26 +18,26 @@ namespace DatabaseLibrary
             connection = new SqlConnection("Server=mssql.fhict.local;Database=dbi441576_kaliber;User ID=dbi441576_kaliber;Password=henk123");
         }
 
-        public void AddBook(Book book)
+        public void AddBook(BookDTO book)
         {
             connection.Open();
 
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandText = "INSERT INTO Ebooks(AuthorID, PubisherID, Title, Subtitle, Category, CoverPhoto, Year_Of_Publication) VALUES (@AuthorID, @PublisherID, @Title, @Subtitle, @Category, @CoverPhoto, @Year_Of_Publication)";
             cmd.Parameters.AddWithValue("@AuthorID", book.author.AuthorID);
-            cmd.Parameters.AddWithValue("@PublisherID", book.publisher.Publisher_ID);
+            cmd.Parameters.AddWithValue("@PublisherID", book.publisher.PublisherID);
             cmd.Parameters.AddWithValue("@Title", book.Title);
             cmd.Parameters.AddWithValue("@Subtitle", book.Subtitle);
             cmd.Parameters.AddWithValue("@Category", book.Category);
             cmd.Parameters.AddWithValue("@CoverPhoto", book.Cover_Picture);
-            cmd.Parameters.AddWithValue("@Year_Of_Publication", book.Year_Of_Publication);
+            cmd.Parameters.AddWithValue("@Year_Of_Publication", book.Year_of_publication);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
 
             connection.Close();
         }
 
-        public void DeleteBook(Book book)
+        public void DeleteBook(BookDTO book)
         {
             connection.Open();
 
@@ -46,14 +48,14 @@ namespace DatabaseLibrary
             cmd.Parameters.AddWithValue("@Title", book.Title);
             cmd.Parameters.AddWithValue("@Subtitle", book.Subtitle);
             cmd.Parameters.AddWithValue("@Category", book.Category);
-            cmd.Parameters.AddWithValue("@Year_Of_Publication", book.Year_Of_Publication);
+            cmd.Parameters.AddWithValue("@Year_Of_Publication", book.Year_of_publication);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
 
             connection.Close();
         }
 
-        public void UpdateBook(Book book) //WIP NEEDS FIX
+        public void UpdateBook(BookDTO book) //WIP NEEDS FIX
         {
             connection.Open();
 
@@ -64,16 +66,16 @@ namespace DatabaseLibrary
             cmd.Parameters.AddWithValue("@Title", book.Title);
             cmd.Parameters.AddWithValue("@Subtitle", book.Subtitle);
             cmd.Parameters.AddWithValue("@Category", book.Category);
-            cmd.Parameters.AddWithValue("@Year_Of_Publication", book.Year_Of_Publication);
+            cmd.Parameters.AddWithValue("@Year_Of_Publication", book.Year_of_publication);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
 
             connection.Close();
         }
 
-        public List<Book> GetAllBooks()
+        public List<BookDTO> GetAllBooks()
         {
-            List<Book> Books = new List<Book>();
+            List<BookDTO> Books = new List<BookDTO>();
             connection.Open();
             DataTable Table = new DataTable();
             string queryString = "SELECT ISBN, Title, Firstname, Preposition, Lastname, Name, Subtitle, Category, CoverPhoto, Year_Of_Publication FROM Ebooks JOIN Author ON Ebooks.AuthorID = Author.AuthorID  JOIN Publisher ON Ebooks.PublisherID = Publisher.PublisherID";
@@ -83,19 +85,19 @@ namespace DatabaseLibrary
 
             foreach (DataRow row in Table.Rows)
             {
-                Book book = new Book();
-                book.author = new Author();
-                book.publisher = new Publisher();
+                BookDTO book = new BookDTO();
+                book.author = new AuthorDTO();
+                book.publisher = new PublisherDTO();
                 string strISBN = row["ISBN"].ToString();
                 book.Title = row["Title"].ToString();
                 book.author.Firstname = row["Firstname"].ToString();
                 book.author.Preposition = row["Preposition"].ToString();
                 book.author.Lastname = row["Lastname"].ToString();
-                book.publisher.Name = row["Name"].ToString();
+                book.publisher.PublisherName = row["Name"].ToString();
                 book.Subtitle = row["Subtitle"].ToString();
                 book.Category = row["Category"].ToString();
                 book.Cover_Picture = row["CoverPhoto"].ToString();
-                book.Year_Of_Publication = row["Year_Of_Publication"].ToString();
+                book.Year_of_publication = row["Year_Of_Publication"].ToString();
                 long longISBN = Convert.ToInt64(strISBN);
                 book.ISBN = longISBN;
                 Books.Add(book);

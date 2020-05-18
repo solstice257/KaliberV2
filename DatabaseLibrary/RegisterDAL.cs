@@ -14,7 +14,7 @@ namespace DatabaseLibrary
         {
             connection = new SqlConnection("Server=mssql.fhict.local;Database=dbi441576_kaliber;User ID=dbi441576_kaliber;Password=henk123");
         }
-        public bool AddedUser(User user)
+        public void Register(User user)
         {
             try
             {

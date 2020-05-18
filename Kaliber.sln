@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kaliber", "Kaliber\Kaliber.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KaliberTests", "KaliberTests\KaliberTests.csproj", "{CB1CCBDE-8247-474D-9E56-3BBE3F797A18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseLibrary", "DatabaseLibrary\DatabaseLibrary.csproj", "{430A9FF3-A6D6-41CF-8A6B-56EFFAA7125F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseLibrary", "DatabaseLibrary\DatabaseLibrary.csproj", "{430A9FF3-A6D6-41CF-8A6B-56EFFAA7125F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLibrary", "BusinessLibrary\BusinessLibrary.csproj", "{D140F79D-C698-4B0E-921B-E2386E4DE155}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLibrary", "BusinessLibrary\BusinessLibrary.csproj", "{D140F79D-C698-4B0E-921B-E2386E4DE155}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{4C12E1B5-A29D-47A0-A322-389BFC2FC4B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D140F79D-C698-4B0E-921B-E2386E4DE155}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D140F79D-C698-4B0E-921B-E2386E4DE155}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D140F79D-C698-4B0E-921B-E2386E4DE155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C12E1B5-A29D-47A0-A322-389BFC2FC4B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C12E1B5-A29D-47A0-A322-389BFC2FC4B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C12E1B5-A29D-47A0-A322-389BFC2FC4B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C12E1B5-A29D-47A0-A322-389BFC2FC4B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

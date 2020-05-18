@@ -3,3 +3,4 @@ D:\Git\KaliberV2\DatabaseLibrary\bin\Debug\netcoreapp3.1\DatabaseLibrary.dll
 D:\Git\KaliberV2\DatabaseLibrary\obj\Debug\netcoreapp3.1\DatabaseLibrary.csprojAssemblyReference.cache
 D:\Git\KaliberV2\DatabaseLibrary\obj\Debug\netcoreapp3.1\DatabaseLibrary.AssemblyInfoInputs.cache
 D:\Git\KaliberV2\DatabaseLibrary\obj\Debug\netcoreapp3.1\DatabaseLibrary.AssemblyInfo.cs
+D:\Git\KaliberV2\DatabaseLibrary\obj\Debug\netcoreapp3.1\DatabaseLibrary.csproj.CoreCompileInputs.cache

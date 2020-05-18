@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Interfaces.Interface;
 
 namespace BusinessLibrary.Models
 {
@@ -22,6 +23,11 @@ namespace BusinessLibrary.Models
             this.LoggedIn = LoggedIn;
             this.Usertype = Usertype;
         }
+        public void Register(User user)
+        {
+
+        }
+
     }
     
 }

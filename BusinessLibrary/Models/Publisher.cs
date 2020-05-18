@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Interfaces.DTO;
 
 namespace BusinessLibrary.Models
 {
@@ -9,10 +10,10 @@ namespace BusinessLibrary.Models
         public int PublisherID { get; private set; }
         public string PublisherName { get; private set; }
 
-        public Publisher(int PublisherID, string PublisherName)
+        public Publisher(PublisherDTO publisherDTO)
         {
-            this.PublisherID = PublisherID;
-            this.PublisherName = PublisherName;
+            this.PublisherID = publisherDTO.PublisherID;
+            this.PublisherName = publisherDTO.PublisherName;
         }
     }
 }
