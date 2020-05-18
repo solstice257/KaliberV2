@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Interfaces.Interface;
+using Interfaces.DTO;
 
 namespace BusinessLibrary.Models
 {
     class User
     {
+        IUserDAL iuserDAL;
         public int UserID { get; private set; }
         public string Username { get; private set; }
         public string Email { get; private set; }
@@ -23,9 +25,15 @@ namespace BusinessLibrary.Models
             this.LoggedIn = LoggedIn;
             this.Usertype = Usertype;
         }
-        public void Register(User user)
-        {
 
+        public void Register(UserDTO user)
+        {
+            iuserDAL.Register(user);
+        }
+
+        public void Login(UserDTO user)
+        {
+            iuserDAL.Login(user);
         }
 
     }

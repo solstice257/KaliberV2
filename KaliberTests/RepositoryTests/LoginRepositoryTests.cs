@@ -15,7 +15,7 @@ namespace Kaliber.Repository.Tests
         [TestMethod()]
         public void LoginSucces()
         {
-            var user = new User();
+            var user = new UserView();
             user.Username = "Jan";
             user.Password = "Jan123";
             user.Email = "Jan@gmail.com";

@@ -10,7 +10,7 @@ namespace KaliberTests.Stubs
     {
         public bool? AddedUserReturnValue = null;
 
-        public bool AddedUser(User user)
+        public bool AddedUser(UserView user)
         {
             if (AddedUserReturnValue == null)
             {

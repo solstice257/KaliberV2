@@ -16,15 +16,15 @@ namespace Kaliber.Repository
         string connectionstring;
         SqlConnection connection;
 
-        List<Book> BorrowedBooks;
+        List<BookView> BorrowedBooks;
         public BookRepository(IConfiguration configuration)
         {
             connectionstring = configuration.GetConnectionString("KaliberConnStr");
             connection = new SqlConnection(connectionstring);
-            BorrowedBooks = new List<Book>();
+            BorrowedBooks = new List<BookView>();
         }
 
-        public void ReadBook(Book book)
+        public void ReadBook(BookView book)
         {
             // Path naar book text dunno moet nog uitzoeken
         }
@@ -62,7 +62,7 @@ namespace Kaliber.Repository
         //    return PublisherID;
         //}
 
-        public void AddBook(Book book)
+        public void AddBook(BookView book)
         {
             connection.Open();
 
@@ -81,7 +81,7 @@ namespace Kaliber.Repository
             connection.Close();
         }
 
-        public void DeleteBook(Book book)
+        public void DeleteBook(BookView book)
         {
             connection.Open();
 
@@ -99,7 +99,7 @@ namespace Kaliber.Repository
             connection.Close();
         }
 
-        public void UpdateBook(Book book) //WIP NEEDS FIX
+        public void UpdateBook(BookView book) //WIP NEEDS FIX
         {
             connection.Open();
 
@@ -117,9 +117,9 @@ namespace Kaliber.Repository
             connection.Close();
         }
 
-        public List<Book> GetAllBooks()
+        public List<BookView> GetAllBooks()
         {
-            List<Book> Books = new List<Book>();
+            List<BookView> Books = new List<BookView>();
             connection.Open();
             DataTable Table = new DataTable();
             string queryString = "SELECT ISBN, Title, Firstname, Preposition, Lastname, Name, Subtitle, Category, CoverPhoto, Year_Of_Publication FROM Ebooks JOIN Author ON Ebooks.AuthorID = Author.AuthorID  JOIN Publisher ON Ebooks.PublisherID = Publisher.PublisherID";
@@ -129,9 +129,9 @@ namespace Kaliber.Repository
                 
             foreach(DataRow row in Table.Rows)
             {
-                Book book = new Book();
-                book.author = new Author();
-                book.publisher = new Publisher();
+                BookView book = new BookView();
+                book.author = new AuthorView();
+                book.publisher = new PublisherView();
                 string strISBN = row["ISBN"].ToString();
                 book.Title = row["Title"].ToString();
                 book.author.Firstname = row["Firstname"].ToString();

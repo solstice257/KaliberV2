@@ -31,7 +31,7 @@ namespace Kaliber.Controllers
         }
 
         [HttpPost]
-        public bool Register(User user)
+        public bool Register(UserView user)
         {
            return iregisterRepository.AddedUser(user);
         }

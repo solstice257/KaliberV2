@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Kaliber
 {
-    public class Author
+    public class AuthorView
     {
         public int AuthorID { get; set; }
         public string Firstname { get; set; }

@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Kaliber.Models
 {
-    public class User
+    public class UserView
     {
         public int UserID { get; set; }
         [Required]

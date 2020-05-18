@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Kaliber.Models
 {
-    public class Book
+    public class BookView
     {
 
         [Required]
         public long ISBN { get; set; }
         [Required]
         public string Title { get; set; }
-        public Author author { get; set; }
-        public Publisher publisher { get; set; }
+        public AuthorView author { get; set; }
+        public PublisherView publisher { get; set; }
         public string Subtitle { get; set; }
         [Required]
         public string Category { get; set; }

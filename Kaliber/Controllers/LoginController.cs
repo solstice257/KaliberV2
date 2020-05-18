@@ -25,7 +25,7 @@ namespace Kaliber.Controllers
         }
 
         [HttpPost]
-        public bool Login(User user)
+        public bool Login(UserView user)
         {
            return user.LoggedIn = iloginRepository.Exists(user);
         }

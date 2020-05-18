@@ -8,6 +8,6 @@ namespace Kaliber.Interfaces
 {
     public interface IRegisterRepository
     {
-        bool AddedUser(User user);
+        bool AddedUser(UserView user);
     }
 }

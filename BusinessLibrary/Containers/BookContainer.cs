@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using BusinessLibrary.Models;
+using Interfaces;
+using Interfaces.DTO;
 using Interfaces.Interface;
 
 
@@ -9,7 +11,7 @@ namespace BusinessLibrary.Containers
 {
     class BookContainer
     {
-        Interfaces.IBookContainersDAL ibookContainersDAL;
+        IBookContainersDAL ibookContainersDAL;
         List<Book> Books;
 
         public BookContainer()
@@ -19,10 +21,16 @@ namespace BusinessLibrary.Containers
 
         public List<Book> GetAllBooks()
         {
-           return ibookContainersDAL.GetAllBooks();
+            foreach (BookDTO bookDTO in ibookContainersDAL.GetAllBooks())
+            {
+                Book book = new Book(bookDTO);
+                Books.Add(book);
+            }
+            return Books;
+
         }
 
-        public void UpdateBook(Book book)
+        public void UpdateBook(BookDTO book)
         {
 
             ibookContainersDAL.UpdateBook(book);

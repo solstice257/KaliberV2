@@ -24,7 +24,7 @@ namespace Kaliber.Repository
             connection = new SqlConnection(connectionstring);
         }
 
-        public bool AddedUser(User user)
+        public bool AddedUser(UserView user)
         {
             try
             {

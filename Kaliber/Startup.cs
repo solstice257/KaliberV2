@@ -19,7 +19,7 @@ namespace Kaliber
 {
     public class Startup
     {
-        public List<Book> books { get; private set; }
+        public List<BookView> books { get; private set; }
         public IConfiguration configuration { get; }
         public Startup(IConfiguration configuration)
         {

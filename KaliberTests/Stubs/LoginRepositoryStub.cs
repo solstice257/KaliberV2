@@ -10,7 +10,7 @@ namespace KaliberTests.Stubs
     {
         public bool? ExistsReturnValue = null;
 
-        public bool Exists(User user)
+        public bool Exists(UserView user)
         {
             if (ExistsReturnValue == null)
             {

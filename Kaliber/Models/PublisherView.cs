@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Kaliber
 {
-    public class Publisher
+    public class PublisherView
     {
         public int Publisher_ID { get; set; }
         public string Name { get; set; }

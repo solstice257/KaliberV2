@@ -16,7 +16,7 @@ namespace Kaliber.Controllers
 {
     public class BookController : Controller
     {
-        List<Book> BorrowedBooks;
+        List<BookView> BorrowedBooks;
         private readonly IWebHostEnvironment env;
         IConfiguration configuration;
         BookRepository _BookRepo;
@@ -33,7 +33,7 @@ namespace Kaliber.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddBook(Book book, IFormFile Cover_Photo)
+        public IActionResult AddBook(BookView book, IFormFile Cover_Photo)
         {
             SaveImagePath(book, Cover_Photo);
             _BookRepo.GetAllBooks();
@@ -41,7 +41,7 @@ namespace Kaliber.Controllers
             return View();
         }
 
-        public void SaveImagePath(Book book, IFormFile Cover_Photo)
+        public void SaveImagePath(BookView book, IFormFile Cover_Photo)
         {
             if (Cover_Photo != null)
             {
@@ -56,11 +56,11 @@ namespace Kaliber.Controllers
             }
         }
 
-        public void ReturnBook(Book book)
+        public void ReturnBook(BookView book)
         {
             BorrowedBooks.Remove(book);
         }
-        public void BorrowBook(Book book)
+        public void BorrowBook(BookView book)
         {
             BorrowedBooks.Add(book);
         }

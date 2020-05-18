@@ -8,6 +8,6 @@ namespace Kaliber.Interfaces
 {
     public interface ILoginRepository
     {
-        public bool Exists(User user);
+        public bool Exists(UserView user);
     }
 }

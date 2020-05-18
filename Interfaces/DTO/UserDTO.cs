@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Interfaces.DTO
 {
-    class UserDTO
+    public class UserDTO
     {
         public enum UserType
         {

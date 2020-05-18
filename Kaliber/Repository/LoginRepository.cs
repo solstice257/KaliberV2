@@ -22,7 +22,7 @@ namespace Kaliber.Repository
             connection = new SqlConnection(connectionstring);
         }
 
-        public bool Exists(User user)
+        public bool Exists(UserView user)
         {
             connection.Open();
 
