@@ -410,3 +410,9 @@ D:\Git\KaliberV2\KaliberTests\obj\Debug\netcoreapp3.1\KaliberTests.csproj.CopyCo
 D:\Git\KaliberV2\KaliberTests\obj\Debug\netcoreapp3.1\KaliberTests.dll
 D:\Git\KaliberV2\KaliberTests\obj\Debug\netcoreapp3.1\KaliberTests.pdb
 D:\Git\KaliberV2\KaliberTests\obj\Debug\netcoreapp3.1\KaliberTests.genruntimeconfig.cache
+D:\Git\KaliberV2\KaliberTests\bin\Debug\netcoreapp3.1\BusinessLibrary.dll
+D:\Git\KaliberV2\KaliberTests\bin\Debug\netcoreapp3.1\DatabaseLibrary.dll
+D:\Git\KaliberV2\KaliberTests\bin\Debug\netcoreapp3.1\Interfaces.dll
+D:\Git\KaliberV2\KaliberTests\bin\Debug\netcoreapp3.1\BusinessLibrary.pdb
+D:\Git\KaliberV2\KaliberTests\bin\Debug\netcoreapp3.1\DatabaseLibrary.pdb
+D:\Git\KaliberV2\KaliberTests\bin\Debug\netcoreapp3.1\Interfaces.pdb

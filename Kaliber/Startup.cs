@@ -12,8 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration.Json;
 using System.Data.SqlClient;
 using Kaliber.Models;
-using Kaliber.Repository;
-using Kaliber.Interfaces;
+
 
 namespace Kaliber
 {
@@ -30,8 +29,7 @@ namespace Kaliber
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddScoped<IRegisterRepository, RegisterRepositiory>();
-            services.AddScoped<ILoginRepository, LoginRepository>();
+
 
             services.AddMvc();
 

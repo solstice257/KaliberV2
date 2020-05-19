@@ -7,7 +7,7 @@ namespace TestApp
     {
         static void Main(string[] args)
         {
-            BookContainer bookContainer = new BookContainer();
+            BookContainer bookContainer = new BookContainer(null);
             bookContainer.GetAllBooks();
         }
     }

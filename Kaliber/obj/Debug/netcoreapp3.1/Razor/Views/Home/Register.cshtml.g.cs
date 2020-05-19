@@ -28,7 +28,7 @@ using Kaliber.Models;
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8e5669984dff89110a9357188e0e80b6adf681b7", @"/Views/Home/Register.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6496985b50163bee9e0358f602f0984f27443260", @"/Views/_ViewImports.cshtml")]
-    public class Views_Home_Register : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Kaliber.Models.User>
+    public class Views_Home_Register : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Kaliber.Models.UserView>
     {
         #line hidden
         #pragma warning disable 0649
@@ -136,7 +136,7 @@ using Kaliber.Models;
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<Kaliber.Models.User> Html { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<Kaliber.Models.UserView> Html { get; private set; }
     }
 }
 #pragma warning restore 1591

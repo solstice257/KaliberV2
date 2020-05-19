@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using Interfaces;
@@ -8,7 +9,7 @@ using Interfaces.Interface;
 
 namespace DatabaseLibrary
 {
-    class UserDAL : IUserDAL, IUserContainerDAL
+    public class UserDAL : IUserDAL, IUserContainerDAL
     {
         SqlConnection connection;
         public UserDAL()
@@ -38,11 +39,6 @@ namespace DatabaseLibrary
             }
         }
 
-        public void Login(UserDTO user)
-        {
-
-        }
-
         public bool CheckIfUserExists(UserDTO user)
         {
             connection.Open();
@@ -58,7 +54,5 @@ namespace DatabaseLibrary
             }
             return false;
         }
-
-
     }
 }

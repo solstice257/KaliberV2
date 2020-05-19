@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using Interfaces.Interface;
 using Interfaces.DTO;
+using DatabaseLibrary;
+using System.Runtime.CompilerServices;
 
 namespace BusinessLibrary.Models
 {
@@ -18,6 +20,7 @@ namespace BusinessLibrary.Models
         public UserType Usertype { get; private set; }
         public User(int UserID, string Username, string Email, string Password, bool LoggedIn, UserType Usertype)
         {
+            iuserDAL = new UserDAL();
             this.UserID = UserID;
             this.Username = Username;
             this.Email = Email;
@@ -30,12 +33,6 @@ namespace BusinessLibrary.Models
         {
             iuserDAL.Register(user);
         }
-
-        public void Login(UserDTO user)
-        {
-            iuserDAL.Login(user);
-        }
-
     }
     
 }

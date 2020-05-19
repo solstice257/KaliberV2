@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Kaliber.Models;
-using Kaliber.Repository;
 using System.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
@@ -16,28 +15,13 @@ namespace Kaliber.Controllers
 {
     public class BookController : Controller
     {
-        List<BookView> BorrowedBooks;
-        private readonly IWebHostEnvironment env;
-        IConfiguration configuration;
-        BookRepository _BookRepo;
-
-        public BookController(IWebHostEnvironment e, IConfiguration config)
+        IWebHostEnvironment env;
+        public BookController(IWebHostEnvironment e)
         {
-            configuration = config;
-            _BookRepo = new BookRepository(configuration);
             env = e;
         }
         public IActionResult Index()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult AddBook(BookView book, IFormFile Cover_Photo)
-        {
-            SaveImagePath(book, Cover_Photo);
-            _BookRepo.GetAllBooks();
-            _BookRepo.AddBook(book);
             return View();
         }
 
@@ -55,27 +39,5 @@ namespace Kaliber.Controllers
 
             }
         }
-
-        public void ReturnBook(BookView book)
-        {
-            BorrowedBooks.Remove(book);
-        }
-        public void BorrowBook(BookView book)
-        {
-            BorrowedBooks.Add(book);
-        }
-
-        //public List<BookView> SearchBook(string SearchElement)
-        //{
-        //    List<BookView> WantedBooks = new List<BookView>();
-        //    foreach (BookView book in books)
-        //    {
-        //        if (book.Equals(Element))
-        //        {
-        //            WantedBooks.Add(book);
-        //        }
-        //    }
-        //    return WantedBooks;
-        //}
     }
 }

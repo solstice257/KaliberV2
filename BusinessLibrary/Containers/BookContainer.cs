@@ -15,11 +15,10 @@ namespace BusinessLibrary.Containers
         IBookContainersDAL ibookContainersDAL;
         List<Book> Books;
 
-        public BookContainer()
+        public BookContainer(IBookContainersDAL ibookContainersDAL)
         {
             Books = new List<Book>();
-            ibookContainersDAL = new BookDAL();
-
+            this.ibookContainersDAL = ibookContainersDAL;
         }
 
         public List<Book> GetAllBooks()
@@ -30,13 +29,20 @@ namespace BusinessLibrary.Containers
                 Books.Add(book);
             }
             return Books;
-
         }
 
         public void UpdateBook(BookDTO book)
         {
-
             ibookContainersDAL.UpdateBook(book);
+        }
+
+        public void AddBook(BookDTO book)
+        {
+            ibookContainersDAL.AddBook(book);
+        }
+        public void DeleteBook(BookDTO book)
+        {
+            ibookContainersDAL.DeleteBook(book);
         }
     }
 }
