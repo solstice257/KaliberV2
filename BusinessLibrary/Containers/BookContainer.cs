@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using BusinessLibrary.Models;
+using DatabaseLibrary;
 using Interfaces;
 using Interfaces.DTO;
 using Interfaces.Interface;
@@ -9,7 +10,7 @@ using Interfaces.Interface;
 
 namespace BusinessLibrary.Containers
 {
-    class BookContainer
+    public class BookContainer
     {
         IBookContainersDAL ibookContainersDAL;
         List<Book> Books;
@@ -17,6 +18,7 @@ namespace BusinessLibrary.Containers
         public BookContainer()
         {
             Books = new List<Book>();
+            ibookContainersDAL = new BookDAL();
 
         }
 

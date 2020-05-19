@@ -5,7 +5,7 @@ using Interfaces.DTO;
 
 namespace BusinessLibrary.Models
 {
-    class Publisher
+    public class Publisher
     {
         public int PublisherID { get; private set; }
         public string PublisherName { get; private set; }

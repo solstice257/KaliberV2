@@ -1,0 +1,237 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Git\\KaliberV2\\TestApp\\TestApp.csproj": {}
+  },
+  "projects": {
+    "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj",
+        "projectName": "BusinessLibrary",
+        "projectPath": "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj",
+        "packagesPath": "C:\\Users\\Sem\\.nuget\\packages\\",
+        "outputPath": "D:\\Git\\KaliberV2\\BusinessLibrary\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Sem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj"
+              },
+              "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj",
+        "projectName": "DatabaseLibrary",
+        "projectPath": "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj",
+        "packagesPath": "C:\\Users\\Sem\\.nuget\\packages\\",
+        "outputPath": "D:\\Git\\KaliberV2\\DatabaseLibrary\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Sem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj",
+        "projectName": "Interfaces",
+        "projectPath": "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj",
+        "packagesPath": "C:\\Users\\Sem\\.nuget\\packages\\",
+        "outputPath": "D:\\Git\\KaliberV2\\Interfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Sem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Git\\KaliberV2\\TestApp\\TestApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Git\\KaliberV2\\TestApp\\TestApp.csproj",
+        "projectName": "TestApp",
+        "projectPath": "D:\\Git\\KaliberV2\\TestApp\\TestApp.csproj",
+        "packagesPath": "C:\\Users\\Sem\\.nuget\\packages\\",
+        "outputPath": "D:\\Git\\KaliberV2\\TestApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Sem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

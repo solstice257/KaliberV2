@@ -6,7 +6,7 @@ using Interfaces.DTO;
 
 namespace BusinessLibrary.Models
 {
-    class Author
+    public class Author
     {
         public int AuthorID { get; private set; }
         public string Firstname { get; private set; }

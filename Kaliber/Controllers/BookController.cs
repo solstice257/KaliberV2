@@ -65,10 +65,10 @@ namespace Kaliber.Controllers
             BorrowedBooks.Add(book);
         }
 
-        //public List<Book> SearchBook(string SearchElement)
+        //public List<BookView> SearchBook(string SearchElement)
         //{
-        //    List<Book> WantedBooks = new List<Book>();
-        //    foreach (Book book in books)
+        //    List<BookView> WantedBooks = new List<BookView>();
+        //    foreach (BookView book in books)
         //    {
         //        if (book.Equals(Element))
         //        {

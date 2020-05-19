@@ -7,7 +7,7 @@ using Interfaces.DTO;
 
 namespace BusinessLibrary.Models
 {
-    class User
+    public class User
     {
         IUserDAL iuserDAL;
         public int UserID { get; private set; }

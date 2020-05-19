@@ -29,7 +29,7 @@ namespace Kaliber.Repository
             // Path naar book text dunno moet nog uitzoeken
         }
 
-        //public int GetAuthorID(Book book, IConfiguration configuration)
+        //public int GetAuthorID(BookView book, IConfiguration configuration)
         //{
         //    string connectionstring = configuration.GetConnectionString("KaliberConnStr");
 
@@ -46,7 +46,7 @@ namespace Kaliber.Repository
         //    return AuthorID;
         //}
 
-        //public int GetPublisherID(Book book, IConfiguration configuration)
+        //public int GetPublisherID(BookView book, IConfiguration configuration)
         //{
         //    string connectionstring = configuration.GetConnectionString("KaliberConnStr");
 
@@ -54,7 +54,7 @@ namespace Kaliber.Repository
 
         //    connection.Open();
         //    SqlCommand cmd = connection.CreateCommand();
-        //    cmd.CommandText = $"SELECT PublisherID FROM Publisher WHERE Name = @name";
+        //    cmd.CommandText = $"SELECT PublisherID FROM PublisherView WHERE Name = @name";
         //    cmd.Parameters.AddWithValue("@name", book.publisher.Name);
         //    int PublisherID = (int)cmd.ExecuteScalar();
         //    cmd.Dispose();
@@ -122,7 +122,7 @@ namespace Kaliber.Repository
             List<BookView> Books = new List<BookView>();
             connection.Open();
             DataTable Table = new DataTable();
-            string queryString = "SELECT ISBN, Title, Firstname, Preposition, Lastname, Name, Subtitle, Category, CoverPhoto, Year_Of_Publication FROM Ebooks JOIN Author ON Ebooks.AuthorID = Author.AuthorID  JOIN Publisher ON Ebooks.PublisherID = Publisher.PublisherID";
+            string queryString = "SELECT ISBN, Title, Firstname, Preposition, Lastname, Name, Subtitle, Category, CoverPhoto, Year_Of_Publication FROM Ebooks JOIN AuthorView ON Ebooks.AuthorID = AuthorView.AuthorID  JOIN PublisherView ON Ebooks.PublisherID = PublisherView.PublisherID";
             SqlCommand cmd = new SqlCommand(queryString, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(Table);

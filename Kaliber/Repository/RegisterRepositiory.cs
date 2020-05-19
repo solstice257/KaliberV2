@@ -12,7 +12,7 @@ namespace Kaliber.Repository
 {
     public class RegisterRepositiory : IRegisterRepository
     {
-        string User = "User";
+        string User = "UserView";
         private readonly IConfiguration configuration;
         string connectionstring;
         SqlConnection connection;

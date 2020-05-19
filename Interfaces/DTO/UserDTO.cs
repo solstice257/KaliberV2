@@ -12,11 +12,11 @@ namespace Interfaces.DTO
             User = 2
         }
 
-        public int UserID { get; private set; }
-        public string Username { get; private set; }
-        public string Email { get; private set; }
-        public string Password { get; private set; }
-        public bool LoggedIn { get; private set; }
-        public UserType Usertype { get; private set; }
+        public long UserID { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public bool LoggedIn { get; set; }
+        public UserType Usertype { get; set; }
     }
 }
