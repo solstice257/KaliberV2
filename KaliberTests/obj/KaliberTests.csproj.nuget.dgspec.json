@@ -27,9 +27,6 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj": {
-                "projectPath": "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj"
-              },
               "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj": {
                 "projectPath": "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj"
               }
@@ -285,7 +282,14 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj"
+              },
+              "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

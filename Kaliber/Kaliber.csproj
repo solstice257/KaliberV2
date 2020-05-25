@@ -19,6 +19,11 @@
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLibrary\BusinessLibrary.csproj" />
+    <ProjectReference Include="..\DatabaseLibrary\DatabaseLibrary.csproj" />
+  </ItemGroup>
+
 
 
 </Project>

@@ -2547,6 +2547,43 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "BusinessLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Interfaces": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BusinessLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BusinessLibrary.dll": {}
+        }
+      },
+      "DatabaseLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Interfaces": "1.0.0",
+          "System.Data.SqlClient": "4.8.1"
+        },
+        "compile": {
+          "bin/placeholder/DatabaseLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DatabaseLibrary.dll": {}
+        }
+      },
+      "Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Interfaces.dll": {}
+        }
       }
     }
   },
@@ -8434,10 +8471,27 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "BusinessLibrary/1.0.0": {
+      "type": "project",
+      "path": "../BusinessLibrary/BusinessLibrary.csproj",
+      "msbuildProject": "../BusinessLibrary/BusinessLibrary.csproj"
+    },
+    "DatabaseLibrary/1.0.0": {
+      "type": "project",
+      "path": "../DatabaseLibrary/DatabaseLibrary.csproj",
+      "msbuildProject": "../DatabaseLibrary/DatabaseLibrary.csproj"
+    },
+    "Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../Interfaces/Interfaces.csproj",
+      "msbuildProject": "../Interfaces/Interfaces.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "BusinessLibrary >= 1.0.0",
+      "DatabaseLibrary >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.3",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.3",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.2",
@@ -8470,7 +8524,14 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj": {
+              "projectPath": "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj"
+            },
+            "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj": {
+              "projectPath": "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -8526,5 +8587,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: System.Data.SqlClient from 4.8.1 to 4.6.1. Reference the package directly from the project to select a different version. \r\n Kaliber -> DatabaseLibrary -> System.Data.SqlClient (>= 4.8.1) \r\n Kaliber -> System.Data.SqlClient (>= 4.6.1)",
+      "libraryId": "System.Data.SqlClient",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

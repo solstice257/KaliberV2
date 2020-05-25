@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "ta3OhohzPi7HZEMXUv8nlLzRNmujG93TE2jS4jwcYdkAOlSP+Y8UKtilCzfzCM8ch7VMheSRxuG25JdAsKiz7A==",
-  "success": true,
+  "dgSpecHash": "6u+mVoh/SZpNydD9+FhZnPHZSjlQZM10cvrV0wd0bXNjiKiTM7CIlhPF3lDtN6IogHboqiSk6/HMqnimrOJ2cw==",
+  "success": false,
   "projectFilePath": "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sem\\.nuget\\packages\\bootstrap\\4.4.1\\bootstrap.4.4.1.nupkg.sha512",
@@ -162,5 +162,15 @@
     "C:\\Users\\Sem\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Sem\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Detected package downgrade: System.Data.SqlClient from 4.8.1 to 4.6.1. Reference the package directly from the project to select a different version. \r\n Kaliber -> DatabaseLibrary -> System.Data.SqlClient (>= 4.8.1) \r\n Kaliber -> System.Data.SqlClient (>= 4.6.1)",
+      "libraryId": "System.Data.SqlClient",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

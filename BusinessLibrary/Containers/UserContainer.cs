@@ -15,6 +15,7 @@ namespace BusinessLibrary.Containers
         {
             iuserContainerDAL = new UserDAL();
         }
+
         public bool CheckIfUserExists(UserDTO user)
         {
             return user.LoggedIn = iuserContainerDAL.CheckIfUserExists(user);

@@ -12,7 +12,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration.Json;
 using System.Data.SqlClient;
 using Kaliber.Models;
-
+using Interfaces;
+using BusinessLibrary.Containers;
+using DatabaseLibrary;
+using BusinessLibrary.Models;
 
 namespace Kaliber
 {
@@ -32,6 +35,9 @@ namespace Kaliber
 
 
             services.AddMvc();
+            services.AddSingleton<IBookContainersDAL, BookDAL>();
+            services.AddSingleton<BookContainer, BookContainer>();
+
 
             // Add application services.
 
