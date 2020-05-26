@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Server;
 using System.IO;
 using BusinessLibrary.Containers;
 using BusinessLibrary.Models;
+using Interfaces;
 
 namespace Kaliber.Controllers
 {
@@ -20,10 +21,10 @@ namespace Kaliber.Controllers
         IWebHostEnvironment env;
         private readonly BookContainer bookContainer;
 
-        public BookController(IWebHostEnvironment e, BookContainer bookContainer)
+        public BookController(IWebHostEnvironment e, IBookContainersDAL ibookContainerDAL)
         {
             env = e;
-            this.bookContainer = bookContainer;
+            bookContainer = new BookContainer(ibookContainerDAL);
         }
         public IActionResult Index()
         {

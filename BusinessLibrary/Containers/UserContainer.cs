@@ -10,9 +10,9 @@ namespace BusinessLibrary.Containers
     class UserContainer
     {
         IUserContainerDAL iuserContainerDAL;
-        public UserContainer()
+        public UserContainer(IUserContainerDAL iuserContainerDAL)
         {
-
+            this.iuserContainerDAL = iuserContainerDAL;
         }
 
         public bool CheckIfUserExists(UserDTO user)

@@ -36,7 +36,7 @@ namespace Kaliber
 
             services.AddMvc();
             services.AddSingleton<IBookContainersDAL, BookDAL>();
-            services.AddSingleton<BookContainer, BookContainer>();
+            //services.AddSingleton<BookContainer, BookContainer>();
 
 
             // Add application services.
