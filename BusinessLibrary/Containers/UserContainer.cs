@@ -1,5 +1,4 @@
 ﻿using BusinessLibrary.Models;
-using DatabaseLibrary;
 using Interfaces.DTO;
 using Interfaces.Interface;
 using System;
@@ -13,7 +12,7 @@ namespace BusinessLibrary.Containers
         IUserContainerDAL iuserContainerDAL;
         public UserContainer()
         {
-            iuserContainerDAL = new UserDAL();
+
         }
 
         public bool CheckIfUserExists(UserDTO user)

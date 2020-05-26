@@ -1,9 +1,0 @@
-D:\Git\KaliberV2\Interfaces\obj\Debug\netcoreapp3.1\Interfaces.csprojAssemblyReference.cache
-D:\Git\KaliberV2\Interfaces\obj\Debug\netcoreapp3.1\Interfaces.csproj.CoreCompileInputs.cache
-D:\Git\KaliberV2\Interfaces\obj\Debug\netcoreapp3.1\Interfaces.AssemblyInfoInputs.cache
-D:\Git\KaliberV2\Interfaces\obj\Debug\netcoreapp3.1\Interfaces.AssemblyInfo.cs
-D:\Git\KaliberV2\Interfaces\bin\Debug\netcoreapp3.1\Interfaces.deps.json
-D:\Git\KaliberV2\Interfaces\bin\Debug\netcoreapp3.1\Interfaces.dll
-D:\Git\KaliberV2\Interfaces\bin\Debug\netcoreapp3.1\Interfaces.pdb
-D:\Git\KaliberV2\Interfaces\obj\Debug\netcoreapp3.1\Interfaces.dll
-D:\Git\KaliberV2\Interfaces\obj\Debug\netcoreapp3.1\Interfaces.pdb
