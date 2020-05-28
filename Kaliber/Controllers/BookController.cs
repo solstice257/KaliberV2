@@ -13,6 +13,7 @@ using System.IO;
 using BusinessLibrary.Containers;
 using BusinessLibrary.Models;
 using Interfaces;
+using Interfaces.DTO;
 
 namespace Kaliber.Controllers
 {
@@ -30,6 +31,11 @@ namespace Kaliber.Controllers
         {
             var booklist = bookContainer.GetAllBooks();
             return View(booklist);
+        }
+        public IActionResult AddBook(BookDTO book)
+        {
+            bookContainer.AddBook(book);
+            return View();
         }
 
         public void SaveImagePath(BookView book, IFormFile Cover_Photo)

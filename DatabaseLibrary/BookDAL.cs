@@ -18,12 +18,21 @@ namespace DatabaseLibrary
             connection = new SqlConnection("Server=mssql.fhict.local;Database=dbi441576_kaliber;User ID=dbi441576_kaliber;Password=henk123");
         }
 
+        public AuthorDTO GetAuthorByName(string AuthorFN, string AuthorLN)
+        {
+            string sql =  $"SELECT * FROM Auhtor WHERE Firstname = {AuthorFN} AND Lastname = {AuthorLN}";
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            AuthorDTO author = (AuthorDTO)cmd.ExecuteScalar();
+            return author;
+        }
+
         public void AddBook(BookDTO book)
         {
             connection.Open();
 
             SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "INSERT INTO Ebooks(AuthorID, PubisherID, Title, Subtitle, Category, CoverPhoto, Year_Of_Publication) VALUES (@AuthorID, @PublisherID, @Title, @Subtitle, @Category, @CoverPhoto, @Year_Of_Publication)";
+            cmd.CommandText = "INSERT INTO Ebooks(ISBN, AuthorID, PubisherID, Title, Subtitle, Category, CoverPhoto, Year_Of_Publication) VALUES (@ISBN,  @AuthorID, @PublisherID, @Title, @Subtitle, @Category, @CoverPhoto, @Year_Of_Publication)";
+            cmd.Parameters.AddWithValue("@ISBN", book.ISBN);
             cmd.Parameters.AddWithValue("@AuthorID", book.author.AuthorID);
             cmd.Parameters.AddWithValue("@PublisherID", book.publisher.PublisherID);
             cmd.Parameters.AddWithValue("@Title", book.Title);
@@ -102,6 +111,7 @@ namespace DatabaseLibrary
                 book.ISBN = longISBN;
                 Books.Add(book);
             }
+            connection.Close();
             return Books;
         }
     }

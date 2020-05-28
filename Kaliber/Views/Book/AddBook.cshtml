@@ -3,9 +3,9 @@
     ViewData["Title"] = "AddBook";
 }
 
-@model Kaliber.Models.BookView
+@model Interfaces.DTO.BookDTO
 
-<div class=" = text-left">
+@*<div class=" = text-left">
     <form method="post" asp-controller="Book" asp-action="AddBook" enctype="multipart/form-data">
 
         <label> ISBN </label> <input type="text" name="ISBN" /> <br />
@@ -20,13 +20,13 @@
         <label> Cover_Photo </label> <input type="file" name="Cover_Photo" /> <br />
         <input type="submit" value="Go" />
     </form>
-</div>
+</div>*@
 
 
 
 
 
-@*<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -41,7 +41,7 @@
     {
     <table cellpadding="0" cellspacing="0">
         <tr>
-            <th colspan="2" align="center">Person Details</th>
+            <th colspan="2" align="center">Book</th>
         </tr>
         <tr>
             <td>ISBN: </td>
@@ -82,7 +82,7 @@
         <tr>
             <td>Uitgever: </td>
             <td>
-                @Html.TextBoxFor(m => m.publisher.Name)
+                @Html.TextBoxFor(m => m.publisher.PublisherName)
             </td>
         </tr>
         <tr>
@@ -94,7 +94,7 @@
         <tr>
             <td>Jaar van Uitgave: </td>
             <td>
-                @Html.TextBoxFor(m => m.Year_Of_Publication)
+                @Html.TextBoxFor(m => m.Year_of_publication)
             </td>
         </tr>
         <tr>
@@ -112,4 +112,4 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
-</html>*@
+</html>
