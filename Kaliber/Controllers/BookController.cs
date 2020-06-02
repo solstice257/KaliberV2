@@ -32,6 +32,12 @@ namespace Kaliber.Controllers
             var booklist = bookContainer.GetAllBooks();
             return View(booklist);
         }
+
+        public IActionResult Book()
+        {
+            return View();
+        }
+
         public IActionResult AddBook(BookDTO book)
         {
             bookContainer.AddBook(book);

@@ -26,7 +26,15 @@ namespace DatabaseLibrary
             return author;
         }
 
-        public void AddBook(BookDTO book)
+        public PublisherDTO GetPublisherByName(string PublisherName)
+        {
+            string sql = $"SELECT * FROM Auhtor WHERE Firstname = {PublisherName}";
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            PublisherDTO publisher = (PublisherDTO)cmd.ExecuteScalar();
+            return publisher;
+        }
+
+        public void AddBook(BookDTO book, int AuthorID, int PublisherID)
         {
             connection.Open();
 

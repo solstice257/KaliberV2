@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "TestApp/1.0.0": {
+        "dependencies": {
+          "BusinessLibrary": "1.0.0"
+        },
+        "runtime": {
+          "TestApp.dll": {}
+        }
+      },
+      "BusinessLibrary/1.0.0": {
+        "dependencies": {
+          "Interfaces": "1.0.0"
+        },
+        "runtime": {
+          "BusinessLibrary.dll": {}
+        }
+      },
+      "Interfaces/1.0.0": {
+        "runtime": {
+          "Interfaces.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TestApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BusinessLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Interfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
