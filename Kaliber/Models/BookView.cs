@@ -15,7 +15,7 @@ namespace Kaliber.Models
         [Required]
         public string Title { get; set; }
         public AuthorView author { get; set; }
-        public PublisherView publisher { get; set; }
+        public string publisher { get; set; }
         public string Subtitle { get; set; }
         [Required]
         public string Category { get; set; }

@@ -20,29 +20,25 @@ namespace DatabaseLibrary
 
         public AuthorDTO GetAuthorByName(string AuthorFN, string AuthorLN)
         {
+            connection.Open();
+
             string sql =  $"SELECT * FROM Auhtor WHERE Firstname = {AuthorFN} AND Lastname = {AuthorLN}";
             SqlCommand cmd = new SqlCommand(sql, connection);
             AuthorDTO author = (AuthorDTO)cmd.ExecuteScalar();
+
+            connection.Close();
             return author;
         }
 
-        public PublisherDTO GetPublisherByName(string PublisherName)
-        {
-            string sql = $"SELECT * FROM Auhtor WHERE Firstname = {PublisherName}";
-            SqlCommand cmd = new SqlCommand(sql, connection);
-            PublisherDTO publisher = (PublisherDTO)cmd.ExecuteScalar();
-            return publisher;
-        }
-
-        public void AddBook(BookDTO book, int AuthorID, int PublisherID)
+        public void AddBook(BookDTO book, int AuthorID)
         {
             connection.Open();
 
             SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "INSERT INTO Ebooks(ISBN, AuthorID, PubisherID, Title, Subtitle, Category, CoverPhoto, Year_Of_Publication) VALUES (@ISBN,  @AuthorID, @PublisherID, @Title, @Subtitle, @Category, @CoverPhoto, @Year_Of_Publication)";
+            cmd.CommandText = "INSERT INTO Ebooks(ISBN, AuthorID, Pubisher, Title, Subtitle, Category, CoverPhoto, Year_Of_Publication) VALUES (@ISBN, @AuthorID, @Publisher, @Title, @Subtitle, @Category, @CoverPhoto, @Year_Of_Publication)";
             cmd.Parameters.AddWithValue("@ISBN", book.ISBN);
-            cmd.Parameters.AddWithValue("@AuthorID", book.author.AuthorID);
-            cmd.Parameters.AddWithValue("@PublisherID", book.publisher.PublisherID);
+            cmd.Parameters.AddWithValue("@AuthorID", AuthorID);
+            cmd.Parameters.AddWithValue("@Publisher", book.publisher);
             cmd.Parameters.AddWithValue("@Title", book.Title);
             cmd.Parameters.AddWithValue("@Subtitle", book.Subtitle);
             cmd.Parameters.AddWithValue("@Category", book.Category);
@@ -92,10 +88,11 @@ namespace DatabaseLibrary
 
         public List<BookDTO> GetAllBooks()
         {
+            connection.Close();
             List<BookDTO> Books = new List<BookDTO>();
             connection.Open();
             DataTable Table = new DataTable();
-            string queryString = "SELECT ISBN, Title, Firstname, Preposition, Lastname, Name, Subtitle, Category, CoverPhoto, Year_Of_Publication FROM Ebooks JOIN Author ON Ebooks.AuthorID = Author.AuthorID  JOIN Publisher ON Ebooks.PublisherID = Publisher.PublisherID";
+            string queryString = "SELECT ISBN, Title, Publisher, Firstname, Preposition, Lastname, Subtitle, Category, CoverPhoto, Year_Of_Publication FROM Ebooks JOIN Author ON Ebooks.AuthorID = Author.AuthorID";
             SqlCommand cmd = new SqlCommand(queryString, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(Table);
@@ -104,13 +101,12 @@ namespace DatabaseLibrary
             {
                 BookDTO book = new BookDTO();
                 book.author = new AuthorDTO();
-                book.publisher = new PublisherDTO();
                 string strISBN = row["ISBN"].ToString();
                 book.Title = row["Title"].ToString();
                 book.author.Firstname = row["Firstname"].ToString();
                 book.author.Preposition = row["Preposition"].ToString();
                 book.author.Lastname = row["Lastname"].ToString();
-                book.publisher.PublisherName = row["Name"].ToString();
+                book.publisher = row["Publisher"].ToString();
                 book.Subtitle = row["Subtitle"].ToString();
                 book.Category = row["Category"].ToString();
                 book.Cover_Picture = row["CoverPhoto"].ToString();

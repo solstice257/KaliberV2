@@ -23,7 +23,7 @@ namespace KaliberTests.Stubs
             return GetAllBooksReturnValue;
         }
 
-        public void AddBook(BookDTO book, int AuthorID, int PublisherID)
+        public void AddBook(BookDTO book, int AuthorID)
         {
             book = null;
         }
@@ -39,10 +39,6 @@ namespace KaliberTests.Stubs
         }
 
         public AuthorDTO GetAuthorByName(string authorFN, string authorLN)
-        {
-            return null;
-        }
-        public PublisherDTO GetPublisherByName(string PubhlisherName)
         {
             return null;
         }

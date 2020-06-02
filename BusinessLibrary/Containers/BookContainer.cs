@@ -38,8 +38,7 @@ namespace BusinessLibrary.Containers
         public void AddBook(BookDTO book)
         {
             int authorID = ibookContainersDAL.GetAuthorByName(book.author.Firstname, book.author.Lastname).AuthorID;
-            int publisherID = ibookContainersDAL.GetPublisherByName(book.publisher.PublisherName).PublisherID;
-            ibookContainersDAL.AddBook(book, authorID, publisherID);
+            ibookContainersDAL.AddBook(book, authorID);
         }
         public void DeleteBook(BookDTO book)
         {

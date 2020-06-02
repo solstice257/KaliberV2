@@ -9,17 +9,19 @@
     <title></title>
 </head>
 <body>
-
-    <div class="text-left">
-
-        @foreach (var item in Model)
-        {
-            <div class="col-4 div">
-                @item.ISBN
-                @item.Title
-            </div>
-        }
+    <div class="ToppageBoekindex">
+        Boekoverzicht
     </div>
+    <br />
+
+    @foreach (var book in Model)
+    {
+        <div class="col-3 Boek" style="float:left; text-align: center;">
+            Book ISBN: @book.ISBN
+            <br />
+            titel: @book.Title
+        </div>
+    }
 
 </body>
 </html>

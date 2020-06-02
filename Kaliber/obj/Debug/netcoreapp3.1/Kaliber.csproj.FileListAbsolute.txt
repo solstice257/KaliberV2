@@ -423,6 +423,8 @@ D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.AssemblyInfo.cs
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.TagHelpers.input.cache
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.TagHelpers.output.cache
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.RazorCoreGenerate.cache
+D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Book\Book.cshtml.g.cs
+D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Book\Index.cshtml.g.cs
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
@@ -442,5 +444,3 @@ D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\staticwebassets\Kaliber.StaticW
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.dll
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.pdb
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.genruntimeconfig.cache
-D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Book\Index.cshtml.g.cs
-D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Book\Book.cshtml.g.cs

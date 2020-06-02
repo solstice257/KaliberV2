@@ -11,7 +11,7 @@ namespace BusinessLibrary.Models
         public long ISBN { get; private set; }
         public string Title { get; private set; }
         public AuthorDTO author { get; private set; }
-        public PublisherDTO publisher { get; private set; }
+        public string publisher { get; private set; }
         public string Subtitle { get; private set; }
         public string Category { get; private set; }
         public string Book_Root { get; private set; }

@@ -9,7 +9,7 @@ namespace Interfaces.DTO
         public long ISBN { get; set; }
         public string Title { get; set; }
         public AuthorDTO author { get; set; }
-        public PublisherDTO publisher { get; set; }
+        public string publisher { get; set; }
         public string Subtitle { get; set; }
         public string Category { get; set; }
         public string Book_Root { get; set; }

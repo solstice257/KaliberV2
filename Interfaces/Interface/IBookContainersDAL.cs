@@ -8,9 +8,8 @@ namespace Interfaces
     {
         public List<BookDTO> GetAllBooks();
         public void UpdateBook(BookDTO book);
-        public void AddBook(BookDTO book, int AuthorID, int PublisherID);
+        public void AddBook(BookDTO book, int AuthorID);
         public void DeleteBook(BookDTO book);
         public AuthorDTO GetAuthorByName(string AuthorFN, string AuthorLN);
-        public PublisherDTO GetPublisherByName(string PublisherName);
     }
 }
