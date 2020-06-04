@@ -42,5 +42,9 @@ namespace KaliberTests.Stubs
         {
             return null;
         }
+        public List<AuthorDTO> SearchAuthorByName(string AuthorFN)
+        {
+            return null;
+        }
     }
 }

@@ -15,6 +15,7 @@ using BusinessLibrary.Models;
 using Interfaces;
 using Interfaces.DTO;
 
+
 namespace Kaliber.Controllers
 {
     public class BookController : Controller
@@ -38,10 +39,16 @@ namespace Kaliber.Controllers
             return View();
         }
 
+        public JsonResult SearchAuthorByName(string firstname)
+        {
+            var authors = bookContainer.SearchAuthorByName(firstname);
+            return Json(new { authors = bookContainer.SearchAuthorByName(firstname) });
+        }
+
         public IActionResult AddBook(BookDTO book)
         {
             bookContainer.AddBook(book);
-            return View();
+            return View("Book");
         }
 
         public void SaveImagePath(BookView book, IFormFile Cover_Photo)

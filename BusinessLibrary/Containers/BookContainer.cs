@@ -40,6 +40,11 @@ namespace BusinessLibrary.Containers
             int authorID = ibookContainersDAL.GetAuthorByName(book.author.Firstname, book.author.Lastname).AuthorID;
             ibookContainersDAL.AddBook(book, authorID);
         }
+        public List<AuthorDTO> SearchAuthorByName(string firstname)
+        {
+           return ibookContainersDAL.SearchAuthorByName(firstname);
+        }
+
         public void DeleteBook(BookDTO book)
         {
             ibookContainersDAL.DeleteBook(book);

@@ -10,6 +10,7 @@ namespace Interfaces
         public void UpdateBook(BookDTO book);
         public void AddBook(BookDTO book, int AuthorID);
         public void DeleteBook(BookDTO book);
+        public List<AuthorDTO> SearchAuthorByName(string AuthorFN);
         public AuthorDTO GetAuthorByName(string AuthorFN, string AuthorLN);
     }
 }

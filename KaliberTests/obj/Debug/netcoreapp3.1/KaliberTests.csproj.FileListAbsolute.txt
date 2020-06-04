@@ -203,7 +203,3 @@ C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\KaliberT
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\KaliberTests\obj\Debug\netcoreapp3.1\KaliberTests.csproj.CopyComplete
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\KaliberTests\obj\Debug\netcoreapp3.1\KaliberTests.dll
 C:\Users\Sem\Desktop\ICT FONTYS\Semester 2 Software\KaliberV2\KaliberV2\KaliberTests\obj\Debug\netcoreapp3.1\KaliberTests.pdb
-D:\Git\KaliberV2\KaliberTests\obj\Debug\netcoreapp3.1\KaliberTests.csprojAssemblyReference.cache
-D:\Git\KaliberV2\KaliberTests\obj\Debug\netcoreapp3.1\KaliberTests.csproj.CoreCompileInputs.cache
-D:\Git\KaliberV2\KaliberTests\obj\Debug\netcoreapp3.1\KaliberTests.AssemblyInfoInputs.cache
-D:\Git\KaliberV2\KaliberTests\obj\Debug\netcoreapp3.1\KaliberTests.AssemblyInfo.cs

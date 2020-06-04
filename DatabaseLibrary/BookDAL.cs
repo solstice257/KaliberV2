@@ -18,16 +18,47 @@ namespace DatabaseLibrary
             connection = new SqlConnection("Server=mssql.fhict.local;Database=dbi441576_kaliber;User ID=dbi441576_kaliber;Password=henk123");
         }
 
+        public List<AuthorDTO> SearchAuthorByName(string AuthorFN)
+        {
+            connection.Open();
+
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT * FROM Author WHERE Firstname LIKE @Firstname";
+            cmd.Parameters.AddWithValue("@Firstname", "%" + AuthorFN + "%");
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            List<AuthorDTO> results = new List<AuthorDTO>();
+
+            while (rdr.Read())
+            {
+                AuthorDTO author = new AuthorDTO(Convert.ToInt32(rdr[0]), rdr[1] as string, rdr[2] as string, rdr[3] as string, rdr[4] as string, Convert.ToInt32(rdr[5] as string), Convert.ToInt32(rdr[6] as string));
+                results.Add(author);
+            }
+            connection.Close();
+            rdr.Close();
+            return results;
+        }
+
         public AuthorDTO GetAuthorByName(string AuthorFN, string AuthorLN)
         {
             connection.Open();
 
-            string sql =  $"SELECT * FROM Auhtor WHERE Firstname = {AuthorFN} AND Lastname = {AuthorLN}";
-            SqlCommand cmd = new SqlCommand(sql, connection);
-            AuthorDTO author = (AuthorDTO)cmd.ExecuteScalar();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT * FROM Author WHERE Firstname LIKE @Firstname AND Lastname LIKE @Lastname";
+            cmd.Parameters.AddWithValue("@Firstname", AuthorFN);
+            cmd.Parameters.AddWithValue("@Lastname", AuthorLN);
+            SqlDataReader rdr = cmd.ExecuteReader();
 
+            while (rdr.Read())
+            {
+                AuthorDTO author = new AuthorDTO(Convert.ToInt32(rdr[0]), rdr[1] as string, rdr[2] as string, rdr[3] as string, rdr[4] as string, Convert.ToInt32(rdr[5] as string), Convert.ToInt32(rdr[6] as string));
+                rdr.Close();
+                connection.Close();
+                return author;
+            }
+            rdr.Close();
             connection.Close();
-            return author;
+            return null;
         }
 
         public void AddBook(BookDTO book, int AuthorID)
@@ -35,15 +66,15 @@ namespace DatabaseLibrary
             connection.Open();
 
             SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "INSERT INTO Ebooks(ISBN, AuthorID, Pubisher, Title, Subtitle, Category, CoverPhoto, Year_Of_Publication) VALUES (@ISBN, @AuthorID, @Publisher, @Title, @Subtitle, @Category, @CoverPhoto, @Year_Of_Publication)";
+            cmd.CommandText = "INSERT INTO Ebooks(ISBN, AuthorID, Publisher, Title, Subtitle, Category, CoverPhoto, Year_Of_Publication) VALUES (@ISBN, @AuthorID, @Publisher, @Title, @Subtitle, @Category, @CoverPhoto, @Year_Of_Publication)";
             cmd.Parameters.AddWithValue("@ISBN", book.ISBN);
             cmd.Parameters.AddWithValue("@AuthorID", AuthorID);
-            cmd.Parameters.AddWithValue("@Publisher", book.publisher);
+            cmd.Parameters.AddWithValue("@Publisher", String.IsNullOrWhiteSpace(book.publisher) ? (object)DBNull.Value : (object)book.publisher);
             cmd.Parameters.AddWithValue("@Title", book.Title);
-            cmd.Parameters.AddWithValue("@Subtitle", book.Subtitle);
-            cmd.Parameters.AddWithValue("@Category", book.Category);
-            cmd.Parameters.AddWithValue("@CoverPhoto", book.Cover_Picture);
-            cmd.Parameters.AddWithValue("@Year_Of_Publication", book.Year_of_publication);
+            cmd.Parameters.AddWithValue("@Subtitle", String.IsNullOrWhiteSpace(book.Subtitle) ? (object)DBNull.Value : (object)book.Subtitle);
+            cmd.Parameters.AddWithValue("@Category", String.IsNullOrWhiteSpace(book.Category) ? (object)DBNull.Value : (object)book.Category); ;
+            cmd.Parameters.AddWithValue("@CoverPhoto", String.IsNullOrWhiteSpace(book.Cover_Picture) ? (object)DBNull.Value : (object)book.Cover_Picture);
+            cmd.Parameters.AddWithValue("@Year_Of_Publication", String.IsNullOrWhiteSpace(book.Year_of_publication) ? (object)DBNull.Value : (object)book.Year_of_publication);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
 
