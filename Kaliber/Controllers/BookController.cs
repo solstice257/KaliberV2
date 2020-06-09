@@ -39,6 +39,11 @@ namespace Kaliber.Controllers
             return View();
         }
 
+        public IActionResult BoekPagina(List<Book> book)
+        {
+            return View(book);
+        }
+
         public JsonResult SearchAuthorByName(string firstname)
         {
             var authors = bookContainer.SearchAuthorByName(firstname);

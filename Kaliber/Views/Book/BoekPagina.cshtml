@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "BoekPagina";
+}
+
+@model List<BusinessLibrary.Models.Book>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    @foreach (var book in Model)
+    {
+        <div>
+            @book.ISBN
+            @book.author.Firstname @book.author.Preposition @book.author.Lastname
+            @book.publisher
+            @book.Title
+            @book.Subtitle
+            @book.Category
+            @book.Cover_Picture
+            @book.Year_of_publication
+        </div>
+    }
+</body>
+</html>
+
+<h1>BoekPagina</h1>
+

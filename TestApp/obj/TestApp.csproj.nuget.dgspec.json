@@ -60,6 +60,68 @@
         }
       }
     },
+    "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj",
+        "projectName": "DatabaseLibrary",
+        "projectPath": "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj",
+        "packagesPath": "C:\\Users\\Sem\\.nuget\\packages\\",
+        "outputPath": "D:\\Git\\KaliberV2\\DatabaseLibrary\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Sem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -112,6 +174,180 @@
         }
       }
     },
+    "D:\\Git\\KaliberV2\\KaliberTests\\KaliberTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Git\\KaliberV2\\KaliberTests\\KaliberTests.csproj",
+        "projectName": "KaliberTests",
+        "projectPath": "D:\\Git\\KaliberV2\\KaliberTests\\KaliberTests.csproj",
+        "packagesPath": "C:\\Users\\Sem\\.nuget\\packages\\",
+        "outputPath": "D:\\Git\\KaliberV2\\KaliberTests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Sem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj"
+              },
+              "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj"
+              },
+              "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\Interfaces\\Interfaces.csproj"
+              },
+              "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.6.1, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj",
+        "projectName": "Kaliber",
+        "projectPath": "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj",
+        "packagesPath": "C:\\Users\\Sem\\.nuget\\packages\\",
+        "outputPath": "D:\\Git\\KaliberV2\\Kaliber\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Sem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj"
+              },
+              "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "D:\\Git\\KaliberV2\\TestApp\\TestApp.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -137,6 +373,15 @@
             "projectReferences": {
               "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj": {
                 "projectPath": "D:\\Git\\KaliberV2\\BusinessLibrary\\BusinessLibrary.csproj"
+              },
+              "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\DatabaseLibrary\\DatabaseLibrary.csproj"
+              },
+              "D:\\Git\\KaliberV2\\KaliberTests\\KaliberTests.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\KaliberTests\\KaliberTests.csproj"
+              },
+              "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj": {
+                "projectPath": "D:\\Git\\KaliberV2\\Kaliber\\Kaliber.csproj"
               }
             }
           }
@@ -160,6 +405,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

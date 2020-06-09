@@ -6,8 +6,6 @@ using Interfaces;
 using Interfaces.Interface;
 using Interfaces.DTO;
 
-
-
 namespace DatabaseLibrary
 {
     public class BookDAL : IBookContainersDAL
@@ -20,23 +18,29 @@ namespace DatabaseLibrary
 
         public List<AuthorDTO> SearchAuthorByName(string AuthorFN)
         {
-            connection.Open();
-
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT * FROM Author WHERE Firstname LIKE @Firstname";
-            cmd.Parameters.AddWithValue("@Firstname", "%" + AuthorFN + "%");
-            SqlDataReader rdr = cmd.ExecuteReader();
-
-            List<AuthorDTO> results = new List<AuthorDTO>();
-
-            while (rdr.Read())
+            try
             {
-                AuthorDTO author = new AuthorDTO(Convert.ToInt32(rdr[0]), rdr[1] as string, rdr[2] as string, rdr[3] as string, rdr[4] as string, Convert.ToInt32(rdr[5] as string), Convert.ToInt32(rdr[6] as string));
-                results.Add(author);
+                connection.Open();
+                SqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = "SELECT * FROM Author WHERE Firstname LIKE @Firstname";
+                cmd.Parameters.AddWithValue("@Firstname", "%" + AuthorFN + "%");
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                List<AuthorDTO> results = new List<AuthorDTO>();
+
+                while (rdr.Read())
+                {
+                    AuthorDTO author = new AuthorDTO(Convert.ToInt32(rdr[0]), rdr[1] as string, rdr[2] as string, rdr[3] as string, rdr[4] as string, Convert.ToInt32(rdr[5] as string), Convert.ToInt32(rdr[6] as string));
+                    results.Add(author);
+                }
+                connection.Close();
+                rdr.Close();
+                return results;
             }
-            connection.Close();
-            rdr.Close();
-            return results;
+            catch (InvalidOperationException)
+            {
+                throw;
+            }
         }
 
         public AuthorDTO GetAuthorByName(string AuthorFN, string AuthorLN)
@@ -72,7 +76,7 @@ namespace DatabaseLibrary
             cmd.Parameters.AddWithValue("@Publisher", String.IsNullOrWhiteSpace(book.publisher) ? (object)DBNull.Value : (object)book.publisher);
             cmd.Parameters.AddWithValue("@Title", book.Title);
             cmd.Parameters.AddWithValue("@Subtitle", String.IsNullOrWhiteSpace(book.Subtitle) ? (object)DBNull.Value : (object)book.Subtitle);
-            cmd.Parameters.AddWithValue("@Category", String.IsNullOrWhiteSpace(book.Category) ? (object)DBNull.Value : (object)book.Category); ;
+            cmd.Parameters.AddWithValue("@Category", String.IsNullOrWhiteSpace(book.Category) ? (object)DBNull.Value : (object)book.Category); 
             cmd.Parameters.AddWithValue("@CoverPhoto", String.IsNullOrWhiteSpace(book.Cover_Picture) ? (object)DBNull.Value : (object)book.Cover_Picture);
             cmd.Parameters.AddWithValue("@Year_Of_Publication", String.IsNullOrWhiteSpace(book.Year_of_publication) ? (object)DBNull.Value : (object)book.Year_of_publication);
             cmd.ExecuteNonQuery();
@@ -119,35 +123,44 @@ namespace DatabaseLibrary
 
         public List<BookDTO> GetAllBooks()
         {
-            connection.Close();
-            List<BookDTO> Books = new List<BookDTO>();
-            connection.Open();
-            DataTable Table = new DataTable();
-            string queryString = "SELECT ISBN, Title, Publisher, Firstname, Preposition, Lastname, Subtitle, Category, CoverPhoto, Year_Of_Publication FROM Ebooks JOIN Author ON Ebooks.AuthorID = Author.AuthorID";
-            SqlCommand cmd = new SqlCommand(queryString, connection);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            adapter.Fill(Table);
-
-            foreach (DataRow row in Table.Rows)
+            try
             {
-                BookDTO book = new BookDTO();
-                book.author = new AuthorDTO();
-                string strISBN = row["ISBN"].ToString();
-                book.Title = row["Title"].ToString();
-                book.author.Firstname = row["Firstname"].ToString();
-                book.author.Preposition = row["Preposition"].ToString();
-                book.author.Lastname = row["Lastname"].ToString();
-                book.publisher = row["Publisher"].ToString();
-                book.Subtitle = row["Subtitle"].ToString();
-                book.Category = row["Category"].ToString();
-                book.Cover_Picture = row["CoverPhoto"].ToString();
-                book.Year_of_publication = row["Year_Of_Publication"].ToString();
-                long longISBN = Convert.ToInt64(strISBN);
-                book.ISBN = longISBN;
-                Books.Add(book);
+                connection.Close();
+                List<BookDTO> Books = new List<BookDTO>();
+                //connection.Open();
+                DataTable Table = new DataTable();
+                string queryString = "SELECT ISBN, Title, Publisher, Firstname, Preposition, Lastname, Subtitle, Category, CoverPhoto, Year_Of_Publication FROM Ebooks JOIN Author ON Ebooks.AuthorID = Author.AuthorID";
+                SqlCommand cmd = new SqlCommand(queryString, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(Table);
+
+                foreach (DataRow row in Table.Rows)
+                {
+                    BookDTO book = new BookDTO();
+                    book.author = new AuthorDTO();
+                    string strISBN = row["ISBN"].ToString();
+                    book.Title = row["Title"].ToString();
+                    book.author.Firstname = row["Firstname"].ToString();
+                    book.author.Preposition = row["Preposition"].ToString();
+                    book.author.Lastname = row["Lastname"].ToString();
+                    book.publisher = row["Publisher"].ToString();
+                    book.Subtitle = row["Subtitle"].ToString();
+                    book.Category = row["Category"].ToString();
+                    book.Cover_Picture = row["CoverPhoto"].ToString();
+                    book.Year_of_publication = row["Year_Of_Publication"].ToString();
+                    long longISBN = Convert.ToInt64(strISBN);
+                    book.ISBN = longISBN;
+                    Books.Add(book);
+                }
+                connection.Close();
+                return Books;
             }
-            connection.Close();
-            return Books;
+            catch (Exception)
+            {
+                
+                throw;
+            }
+
         }
     }
 }

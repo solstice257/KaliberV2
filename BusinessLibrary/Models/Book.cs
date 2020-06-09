@@ -18,6 +18,11 @@ namespace BusinessLibrary.Models
         public string Cover_Picture { get; private set; }
         public string Year_of_publication { get; private set; }
 
+        public Book()
+        {
+
+        }
+
         public Book(BookDTO bookDTO)
         {
             this.ISBN = bookDTO.ISBN;

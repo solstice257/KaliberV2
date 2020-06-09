@@ -2,6 +2,7 @@
 using Interfaces;
 using Interfaces.DTO;
 using Kaliber;
+using KaliberTests.DatabaseRowSimulations;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace KaliberTests.Stubs
 {
     public class BookContainerStub : IBookContainersDAL
     {
+        public BookRow bookRow;
         public List<BookDTO> GetAllBooksReturnValue = null;
         public string AddBookError = null;
         public List<BookDTO> GetAllBooks()
@@ -25,7 +27,7 @@ namespace KaliberTests.Stubs
 
         public void AddBook(BookDTO book, int AuthorID)
         {
-            book = null;
+
         }
 
         public void UpdateBook(BookDTO book)
@@ -40,7 +42,8 @@ namespace KaliberTests.Stubs
 
         public AuthorDTO GetAuthorByName(string authorFN, string authorLN)
         {
-            return null;
+            AuthorDTO x = new AuthorDTO();
+            return x;
         }
         public List<AuthorDTO> SearchAuthorByName(string AuthorFN)
         {

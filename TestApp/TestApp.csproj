@@ -7,6 +7,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessLibrary\BusinessLibrary.csproj" />
+    <ProjectReference Include="..\DatabaseLibrary\DatabaseLibrary.csproj" />
+    <ProjectReference Include="..\KaliberTests\KaliberTests.csproj" />
+    <ProjectReference Include="..\Kaliber\Kaliber.csproj" />
   </ItemGroup>
 
 </Project>

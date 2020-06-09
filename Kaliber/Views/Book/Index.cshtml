@@ -13,17 +13,21 @@
         Boekoverzicht
     </div>
     <br />
-
-    @foreach (var book in Model)
+    @using (Html.BeginForm("BoekPagina", "Book", FormMethod.Post, new { enctype = "multiplart/form-data" }))
     {
-        <div class="col-3 Boek" style="float:left; text-align: center;">
-            Book ISBN: @book.ISBN
-            <br />
-            titel: @book.Title
-        </div>
+        @foreach (var book in Model)
+        {
+            <form method="post">
+                <button type="submit" class="col-3 Boek" style="float:left; text-align: center;">
+                    Boek ISBN: @book.ISBN
+                    <br />
+                    titel: @book.Title
+                </button>
+            </form>
+        }
     }
 
-</body>
+    </body>
 </html>
 
 
