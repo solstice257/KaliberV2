@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using Interfaces;
 using Interfaces.Interface;
 using Interfaces.DTO;
+using System.Transactions;
 
 namespace DatabaseLibrary
 {
@@ -41,6 +42,28 @@ namespace DatabaseLibrary
             {
                 throw;
             }
+        }
+
+        public List<BookDTO> SearchBookByTitle(string Title)
+        {
+            connection.Open();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT ISBN, AuhtorID, Publisher, Title, Subtitle, Category, Year_of_publication, Firstname, Preposition, Lastname, City, Year_of_birth, Year_of_death  FROM Ebooks JOIN Author ON Ebooks.AuthorID = Author.AuthorID WHERE Title LIKE @Title";
+            cmd.Parameters.AddWithValue("@Title", "%" + Title + "%");
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            List<BookDTO> results = new List<BookDTO>();
+
+            while (rdr.Read())
+            {
+                AuthorDTO author = new AuthorDTO(Convert.ToInt32(rdr[1]), rdr[7] as string, rdr[8] as string, rdr[9] as string, rdr[10] as string, Convert.ToInt32(rdr[11] as string), Convert.ToInt32(rdr[12] as string));
+
+                BookDTO book = new BookDTO(Convert.ToInt64(rdr[0]), rdr[3] as string, author, rdr[2] as string, rdr[4] as string, rdr[5] as string, null, null, rdr[6] as string);
+                results.Add(book);
+            }
+            connection.Close();
+            rdr.Close();
+            return results;
         }
 
         public AuthorDTO GetAuthorByName(string AuthorFN, string AuthorLN)
@@ -108,9 +131,10 @@ namespace DatabaseLibrary
             connection.Open();
 
             SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "UPDATE Ebooks(Title, AuthorLN, Title, Subtitle, Category, Year_Of_Publication) VALUES (@AuthorFN, @AuthorLN, @Title, @Subtitle, @Category, @Year_Of_Publication)";
-            cmd.Parameters.AddWithValue("@AuthorFN", book.author.Firstname);
-            cmd.Parameters.AddWithValue("@AuthorLN", book.author.Lastname);
+            cmd.Connection = connection;
+            cmd.CommandText = "UPDATE Ebooks(AuthorID, Publisher, Title, Subtitle, Category, Year_Of_Publication) VALUES (@AuhtorID, @Publisher, @Title, @Subtitle, @Category, @Year_Of_Publication)";
+            cmd.Parameters.AddWithValue("@AuthorID", book.author.AuthorID);
+            cmd.Parameters.AddWithValue("@Publisher", book.publisher);
             cmd.Parameters.AddWithValue("@Title", book.Title);
             cmd.Parameters.AddWithValue("@Subtitle", book.Subtitle);
             cmd.Parameters.AddWithValue("@Category", book.Category);

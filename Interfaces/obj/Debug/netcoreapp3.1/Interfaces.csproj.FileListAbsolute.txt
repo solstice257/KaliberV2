@@ -6,4 +6,3 @@ D:\Git\KaliberV2\Interfaces\obj\Debug\netcoreapp3.1\Interfaces.AssemblyInfoInput
 D:\Git\KaliberV2\Interfaces\obj\Debug\netcoreapp3.1\Interfaces.AssemblyInfo.cs
 D:\Git\KaliberV2\Interfaces\obj\Debug\netcoreapp3.1\Interfaces.dll
 D:\Git\KaliberV2\Interfaces\obj\Debug\netcoreapp3.1\Interfaces.pdb
-D:\Git\KaliberV2\Interfaces\obj\Debug\netcoreapp3.1\Interfaces.csprojAssemblyReference.cache

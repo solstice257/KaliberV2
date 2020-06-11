@@ -1,0 +1,196 @@
+﻿
+@{
+    ViewData["Title"] = "BoekWijzigen";
+}
+
+@model Interfaces.DTO.BookDTO
+
+<h1>BoekWijzigen</h1>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Index</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="col-5">
+        @using (Html.BeginForm("UpdateBook", "Book", FormMethod.Post, new { enctype = "multiplart/form-data" }))
+        {
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <th colspan="2" align="center">Book</th>
+                </tr>
+                <tr>
+                    <td>Titel: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Title, new { id = "Title", @onkeyup = "OnChangeTitle();" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ondertitel: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Subtitle, new { id = "Sub" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Voornaam auteur: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.author.Firstname, new { id = "Firstname"})
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tussenvoegsel: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.author.Preposition, new { id = "Prep" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Achternaam auteur: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.author.Lastname, new { id = "Lastname" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Uitgever: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.publisher, new { id = "Publisher" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Categorie: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Category, new { id = "Category" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jaar van Uitgave: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Year_of_publication, new { id = "Year" })
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit" /></td>
+                </tr>
+            </table>
+        }
+    </div>
+    <div id="list" class="col-5">
+
+    </div>
+    @*<script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+    <script>
+        function OnChangeTitle() {
+            var x = document.getElementById("Title").value;
+            console.log(x);
+
+            $.ajax({
+                type: "GET",
+                traditional: true,
+                url: "/Book/SearchBookByName",
+                data: { 'title': x },
+                dataType: "json",
+            }).done(function (arrayBook) {
+                console.log(arraybook);
+                document.getElementById("list").innerHTML = "";
+
+                for (var i = 0; i < arrayBook["books"].length; i++) {
+                    var t = document.createTextNode(arrayBook["books"][i]["title"]);
+
+                    if (arrayBook["books"][i]["subtitle"] != null) {
+                        var t2 = document.createTextNode(arrayBook["books"][i]["subtitle"]);
+                    }
+
+                    if (arrayBook["books"][i]["firstname"] != null) {
+                        var t3 = document.createTextNode(arrayBook["books"][i]["author"]["firstname"]);
+                    }
+
+                    if (arrayBook["books"][i]["preposition"] != null) {
+                        var t4 = document.createTextNode(arrayBook["books"][i]["author"]["preposition"]);
+                    }
+
+                    if (arrayBook["books"][i]["lastname"] != null) {
+                        var t5 = document.createTextNode(arrayBook["books"][i]["author"]["lastname"]);
+                    }
+
+                    if (arrayBook["books"][i]["publisher"] != null) {
+                        var t6 = document.createTextNode(arrayBook["books"][i]["publisher"]);
+                    }
+
+                    if (arrayBook["books"][i]["category"] != null) {
+                        var t7 = document.createTextNode(arrayBook["books"][i]["category"]);
+                    }
+
+                    if (arrayBook["books"][i]["year_of_publication"] != null) {
+                        var t8 = document.createTextNode(arrayBook["books"][i]["year_of_publication"]);
+                    }
+
+                    var br = document.createElement("br");
+                    var button = document.createElement('button')
+
+                    button.addEventListener("click", function () {
+                        document.getElementById("Firstname").value = this.firstChild.textContent;
+                        document.getElementById("Prep").value = this.firstChild.nextSibling.textContent;
+                        document.getElementById("Lastname").value = this.lastChild.textContent;
+
+                        console.log(this.childNodes[1].value);
+                        //console.log(this.firstChild);
+                        //console.log(this.lastChild);
+                    });
+
+                    button.appendChild(t);
+
+                    if (t2 != null) {
+                        button.appendChild(t2);
+                    }
+
+                    if (t3 != null) {
+                        button.appendChild(t3);
+                    }
+
+                    if (t4 != null) {
+                        button.appendChild(t4);
+                    }
+
+                    if (t5 != null) {
+                        button.appendChild(t5);
+                    }
+
+                    if (t6 != null) {
+                        button.appendChild(t6);
+                    }
+
+                    if (t7 != null) {
+                        button.appendChild(t7);
+                    }
+
+                    if (t8 != null) {
+                        button.appendChild(t8);
+                    }
+
+                    t = null;
+                    t2 = null;
+                    t3 = null;
+                    t4 = null;
+                    t5 = null;
+                    t6 = null;
+                    t7 = null;
+                    t8 = null;
+
+                    document.getElementById("list").appendChild(button);
+                    document.getElementById("list").appendChild(br);
+                }
+
+            }).fail(function (e) {
+                console.log(e.responseText);
+            });
+        }
+    </script>
+</body>
+</html>

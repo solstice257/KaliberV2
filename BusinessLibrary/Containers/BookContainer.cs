@@ -45,6 +45,11 @@ namespace BusinessLibrary.Containers
            return ibookContainersDAL.SearchAuthorByName(firstname);
         }
 
+        public List<BookDTO> SearchBookByTitle(string title)
+        {
+            return ibookContainersDAL.SearchBookByTitle(title);
+        }
+
         public void DeleteBook(BookDTO book)
         {
             ibookContainersDAL.DeleteBook(book);
