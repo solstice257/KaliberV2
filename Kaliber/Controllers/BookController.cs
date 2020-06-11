@@ -34,7 +34,11 @@ namespace Kaliber.Controllers
             return View(booklist);
         }
 
-        public IActionResult Book()
+        public IActionResult BookToevoegen()
+        {
+            return View();
+        }
+        public IActionResult BoekWijzigen()
         {
             return View();
         }

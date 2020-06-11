@@ -93,12 +93,18 @@
             $.ajax({
                 type: "GET",
                 traditional: true,
-                url: "/Book/SearchBookByName",
+                url: "/Book/SearchBookByTitle",
                 data: { 'title': x },
                 dataType: "json",
             }).done(function (arrayBook) {
-                console.log(arraybook);
+                console.log(arrayBook);
+                console.log(arrayBook["books"]);
+                console.log(arrayBook["books"][0]);
+                console.log(arrayBook["books"][0]["author"]);
+                console.log(arrayBook["books"][0]["author"]["firstname"]);
+
                 document.getElementById("list").innerHTML = "";
+
 
                 for (var i = 0; i < arrayBook["books"].length; i++) {
                     var t = document.createTextNode(arrayBook["books"][i]["title"]);
@@ -107,15 +113,15 @@
                         var t2 = document.createTextNode(arrayBook["books"][i]["subtitle"]);
                     }
 
-                    if (arrayBook["books"][i]["firstname"] != null) {
+                    if (arrayBook["books"][i]["author"]["firstname"] != null) {
                         var t3 = document.createTextNode(arrayBook["books"][i]["author"]["firstname"]);
                     }
 
-                    if (arrayBook["books"][i]["preposition"] != null) {
+                    if (arrayBook["books"][i]["author"]["preposition"] != null) {
                         var t4 = document.createTextNode(arrayBook["books"][i]["author"]["preposition"]);
                     }
 
-                    if (arrayBook["books"][i]["lastname"] != null) {
+                    if (arrayBook["books"][i]["author"]["lastname"] != null) {
                         var t5 = document.createTextNode(arrayBook["books"][i]["author"]["lastname"]);
                     }
 
@@ -135,13 +141,7 @@
                     var button = document.createElement('button')
 
                     button.addEventListener("click", function () {
-                        document.getElementById("Firstname").value = this.firstChild.textContent;
-                        document.getElementById("Prep").value = this.firstChild.nextSibling.textContent;
-                        document.getElementById("Lastname").value = this.lastChild.textContent;
-
-                        console.log(this.childNodes[1].value);
-                        //console.log(this.firstChild);
-                        //console.log(this.lastChild);
+                        document.getElementById("Title").value = this.firstChild.textContent;
                     });
 
                     button.appendChild(t);
