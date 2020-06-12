@@ -58,7 +58,7 @@ namespace DatabaseLibrary
             {
                 AuthorDTO author = new AuthorDTO(Convert.ToInt32(rdr[1]), rdr[7] as string, rdr[8] as string, rdr[9] as string, rdr[10] as string, Convert.ToInt32(rdr[11] as string), Convert.ToInt32(rdr[12] as string));
 
-                BookDTO book = new BookDTO(Convert.ToInt64(rdr[0]), rdr[3] as string, author, rdr[2] as string, rdr[4] as string, rdr[5] as string, null, null, rdr[6] as string);
+                BookDTO book = new BookDTO(Convert.ToInt64(rdr[0]), rdr[3] as string, author, rdr[2] as string, rdr[4] as string, rdr[5] as string, null, null, Convert.ToString(rdr[6] as Nullable<int>));
                 results.Add(book);
             }
             connection.Close();
@@ -132,7 +132,7 @@ namespace DatabaseLibrary
 
             SqlCommand cmd = connection.CreateCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "UPDATE Ebooks(AuthorID, Publisher, Title, Subtitle, Category, Year_Of_Publication) VALUES (@AuhtorID, @Publisher, @Title, @Subtitle, @Category, @Year_Of_Publication)";
+            cmd.CommandText = "UPDATE Ebooks(AuthorID, Publisher, Title, Subtitle, Category, Year_Of_Publication) VALUES (@AuthorID, @Publisher, @Title, @Subtitle, @Category, @Year_Of_Publication)";
             cmd.Parameters.AddWithValue("@AuthorID", book.author.AuthorID);
             cmd.Parameters.AddWithValue("@Publisher", book.publisher);
             cmd.Parameters.AddWithValue("@Title", book.Title);

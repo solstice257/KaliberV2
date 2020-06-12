@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "BoekWijzigen";
+    var id = Url.ActionContext.RouteData.Values["id"];
 }
 
 @model Interfaces.DTO.BookDTO
@@ -27,7 +28,7 @@
                 <tr>
                     <td>Titel: </td>
                     <td>
-                        @Html.TextBoxFor(m => m.Title, new { id = "Title", @onkeyup = "OnChangeTitle();" })
+                        @Html.TextBoxFor(m => m.Title, new { id = "Title" })
                     </td>
                 </tr>
                 <tr>
@@ -86,111 +87,85 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
     <script>
-        function OnChangeTitle() {
-            var x = document.getElementById("Title").value;
-            console.log(x);
+        $(document).ready(function () {
 
             $.ajax({
                 type: "GET",
                 traditional: true,
                 url: "/Book/SearchBookByTitle",
-                data: { 'title': x },
+                data: { 'title': '@Html.Raw(@id.ToString())' },
                 dataType: "json",
             }).done(function (arrayBook) {
-                console.log(arrayBook);
-                console.log(arrayBook["books"]);
-                console.log(arrayBook["books"][0]);
-                console.log(arrayBook["books"][0]["author"]);
-                console.log(arrayBook["books"][0]["author"]["firstname"]);
 
+                console.log('@Html.Raw(@id.ToString())');
                 document.getElementById("list").innerHTML = "";
 
-
                 for (var i = 0; i < arrayBook["books"].length; i++) {
-                    var t = document.createTextNode(arrayBook["books"][i]["title"]);
 
-                    if (arrayBook["books"][i]["subtitle"] != null) {
-                        var t2 = document.createTextNode(arrayBook["books"][i]["subtitle"]);
-                    }
+                    document.getElementById("Title").value = arrayBook["books"][i]["title"];
+                    document.getElementById("Sub").value = arrayBook["books"][i]["subtitle"];
+                    document.getElementById("Firstname").value = arrayBook["books"][i]["author"]["firstname"];
+                    document.getElementById("Prep").value = arrayBook["books"][i]["author"]["preposition"];
+                    document.getElementById("Lastname").value = arrayBook["books"][i]["author"]["lastname"];
+                    document.getElementById("Publisher").value = arrayBook["books"][i]["publisher"];
+                    document.getElementById("Category").value = arrayBook["books"][i]["category"];
+                    document.getElementById("Year").value = arrayBook["books"][i]["year_of_publication"];
+                    console.log(arrayBook["books"][i]["year_of_publication"]);
 
-                    if (arrayBook["books"][i]["author"]["firstname"] != null) {
-                        var t3 = document.createTextNode(arrayBook["books"][i]["author"]["firstname"]);
-                    }
+                    //var br = document.createElement("br");
+                    //var button = document.createElement('button')
 
-                    if (arrayBook["books"][i]["author"]["preposition"] != null) {
-                        var t4 = document.createTextNode(arrayBook["books"][i]["author"]["preposition"]);
-                    }
+                    //button.addEventListener("click", function () {
+                    //    document.getElementById("Title").value = this.firstChild.textContent;
+                    //});
 
-                    if (arrayBook["books"][i]["author"]["lastname"] != null) {
-                        var t5 = document.createTextNode(arrayBook["books"][i]["author"]["lastname"]);
-                    }
+                    //button.appendChild(t);
 
-                    if (arrayBook["books"][i]["publisher"] != null) {
-                        var t6 = document.createTextNode(arrayBook["books"][i]["publisher"]);
-                    }
+                    //if (t2 != null) {
+                    //    button.appendChild(t2);
+                    //}
 
-                    if (arrayBook["books"][i]["category"] != null) {
-                        var t7 = document.createTextNode(arrayBook["books"][i]["category"]);
-                    }
+                    //if (t3 != null) {
+                    //    button.appendChild(t3);
+                    //}
 
-                    if (arrayBook["books"][i]["year_of_publication"] != null) {
-                        var t8 = document.createTextNode(arrayBook["books"][i]["year_of_publication"]);
-                    }
+                    //if (t4 != null) {
+                    //    button.appendChild(t4);
+                    //}
 
-                    var br = document.createElement("br");
-                    var button = document.createElement('button')
+                    //if (t5 != null) {
+                    //    button.appendChild(t5);
+                    //}
 
-                    button.addEventListener("click", function () {
-                        document.getElementById("Title").value = this.firstChild.textContent;
-                    });
+                    //if (t6 != null) {
+                    //    button.appendChild(t6);
+                    //}
 
-                    button.appendChild(t);
+                    //if (t7 != null) {
+                    //    button.appendChild(t7);
+                    //}
 
-                    if (t2 != null) {
-                        button.appendChild(t2);
-                    }
+                    //if (t8 != null) {
+                    //    button.appendChild(t8);
+                    //}
 
-                    if (t3 != null) {
-                        button.appendChild(t3);
-                    }
+                    //t = null;
+                    //t2 = null;
+                    //t3 = null;
+                    //t4 = null;
+                    //t5 = null;
+                    //t6 = null;
+                    //t7 = null;
+                    //t8 = null;
 
-                    if (t4 != null) {
-                        button.appendChild(t4);
-                    }
-
-                    if (t5 != null) {
-                        button.appendChild(t5);
-                    }
-
-                    if (t6 != null) {
-                        button.appendChild(t6);
-                    }
-
-                    if (t7 != null) {
-                        button.appendChild(t7);
-                    }
-
-                    if (t8 != null) {
-                        button.appendChild(t8);
-                    }
-
-                    t = null;
-                    t2 = null;
-                    t3 = null;
-                    t4 = null;
-                    t5 = null;
-                    t6 = null;
-                    t7 = null;
-                    t8 = null;
-
-                    document.getElementById("list").appendChild(button);
-                    document.getElementById("list").appendChild(br);
+                    //document.getElementById("list").appendChild(button);
+                    //document.getElementById("list").appendChild(br);
                 }
 
             }).fail(function (e) {
                 console.log(e.responseText);
             });
-        }
+        });
     </script>
 </body>
 </html>

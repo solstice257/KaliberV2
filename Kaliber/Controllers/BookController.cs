@@ -38,9 +38,9 @@ namespace Kaliber.Controllers
         {
             return View();
         }
-        public IActionResult BoekWijzigen()
+        public IActionResult BoekWijzigen(BookDTO book)
         {
-            return View();
+            return View(book);
         }
 
         public IActionResult BoekPagina(List<Book> book)
