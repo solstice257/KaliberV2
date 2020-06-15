@@ -50,9 +50,9 @@ namespace BusinessLibrary.Containers
             return ibookContainersDAL.SearchBookByTitle(title);
         }
 
-        public void DeleteBook(BookDTO book)
+        public void DeleteBook(long ISBN)
         {
-            ibookContainersDAL.DeleteBook(book);
+            ibookContainersDAL.DeleteBook(ISBN);
         }
     }
 }

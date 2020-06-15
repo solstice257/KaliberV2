@@ -108,18 +108,13 @@ namespace DatabaseLibrary
             connection.Close();
         }
 
-        public void DeleteBook(BookDTO book)
+        public void DeleteBook(long ISBN)
         {
             connection.Open();
 
             SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "DELETE FROM Ebooks(AuthorFN, AuthorLN, Title, Subtitle, Category, Year_Of_Publication) VALUES (@AuthorFN, @AuthorLN, @Title, @Subtitle, @Category, @Year_Of_Publication)";
-            cmd.Parameters.AddWithValue("@AuthorFN", book.author.Firstname);
-            cmd.Parameters.AddWithValue("@AuthorLN", book.author.Lastname);
-            cmd.Parameters.AddWithValue("@Title", book.Title);
-            cmd.Parameters.AddWithValue("@Subtitle", book.Subtitle);
-            cmd.Parameters.AddWithValue("@Category", book.Category);
-            cmd.Parameters.AddWithValue("@Year_Of_Publication", book.Year_of_publication);
+            cmd.CommandText = "DELETE FROM Ebooks WHERE ISBN = @ISBN";
+            cmd.Parameters.AddWithValue("@ISBN", ISBN);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
 
@@ -131,17 +126,35 @@ namespace DatabaseLibrary
             connection.Open();
 
             SqlCommand cmd = connection.CreateCommand();
+            SqlTransaction transaction = connection.BeginTransaction(); 
             cmd.Connection = connection;
-            cmd.CommandText = "UPDATE Ebooks(AuthorID, Publisher, Title, Subtitle, Category, Year_Of_Publication) VALUES (@AuthorID, @Publisher, @Title, @Subtitle, @Category, @Year_Of_Publication)";
-            cmd.Parameters.AddWithValue("@AuthorID", book.author.AuthorID);
-            cmd.Parameters.AddWithValue("@Publisher", book.publisher);
+            cmd.Transaction = transaction;
+            cmd.CommandText = "UPDATE Ebooks SET Publisher = @Publisher, Title = @Title, Subtitle = @Subtitle, Category = @Category, Year_Of_Publication = @Year_Of_Publication WHERE ISBN = @ISBN";
+            cmd.Parameters.AddWithValue("@ISBN", book.ISBN);
+            cmd.Parameters.AddWithValue("@Publisher", String.IsNullOrWhiteSpace(book.publisher) ? (object)DBNull.Value : (object)book.publisher);
             cmd.Parameters.AddWithValue("@Title", book.Title);
-            cmd.Parameters.AddWithValue("@Subtitle", book.Subtitle);
-            cmd.Parameters.AddWithValue("@Category", book.Category);
-            cmd.Parameters.AddWithValue("@Year_Of_Publication", book.Year_of_publication);
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
+            cmd.Parameters.AddWithValue("@Subtitle", String.IsNullOrWhiteSpace(book.Subtitle) ? (object)DBNull.Value : (object)book.Subtitle);
+            cmd.Parameters.AddWithValue("@Category", String.IsNullOrWhiteSpace(book.Category) ? (object)DBNull.Value : (object)book.Category);
+            cmd.Parameters.AddWithValue("@Year_Of_Publication", String.IsNullOrWhiteSpace(book.Year_of_publication) ? (object)DBNull.Value : (object)book.Year_of_publication);
 
+            SqlCommand cmd2 = connection.CreateCommand();
+            cmd2.Connection = connection;
+            cmd2.Transaction = transaction;
+            cmd2.CommandText = "UPDATE Ebooks SET AuthorID = @AuthorID WHERE ISBN = @ISBN";
+            cmd2.Parameters.AddWithValue("@ISBN", book.ISBN);
+            cmd2.Parameters.AddWithValue("@AuthorID", book.author.AuthorID);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+                transaction.Commit();
+            }
+            catch (SqlException)
+            {
+                transaction.Rollback();
+                throw;
+            }
             connection.Close();
         }
 

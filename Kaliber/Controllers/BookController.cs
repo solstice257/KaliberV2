@@ -28,6 +28,7 @@ namespace Kaliber.Controllers
             env = e;
             bookContainer = new BookContainer(ibookContainerDAL);
         }
+
         public IActionResult Index()
         {
             var booklist = bookContainer.GetAllBooks();
@@ -64,10 +65,16 @@ namespace Kaliber.Controllers
             return View("BookToevoegen");
         }
 
+        public IActionResult DeleteBook(long ISBN)
+        {
+            //bookContainer.DeleteBook(ISBN);
+            return RedirectToAction("Index");
+        }
+
         public IActionResult UpdateBook(BookDTO book)
         {
             bookContainer.UpdateBook(book);
-            return View("BoekWijzigen");
+            return RedirectToAction("Index");
         }
 
         public void SaveImagePath(BookView book, IFormFile Cover_Photo)
