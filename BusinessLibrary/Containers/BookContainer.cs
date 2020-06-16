@@ -20,6 +20,13 @@ namespace BusinessLibrary.Containers
             this.ibookContainersDAL = ibookContainersDAL;
         }
 
+        public BookDTO BookToBookDTO(Book book)
+        {
+            AuthorDTO authorDTO = new AuthorDTO(book.author.AuthorID, book.author.Firstname, book.author.Preposition, book.author.Lastname, book.author.City, book.author.Year_of_birth, book.author.Year_of_death);
+            BookDTO bookDTO = new BookDTO(book.ISBN, book.Title, authorDTO, book.publisher, book.Subtitle, book.Category, book.Book_Root, book.Cover_Picture, book.Year_of_publication);
+            return bookDTO;
+        }
+
         public List<Book> GetAllBooks()
         {
             foreach (BookDTO bookDTO in ibookContainersDAL.GetAllBooks())
@@ -30,15 +37,17 @@ namespace BusinessLibrary.Containers
             return Books;
         }
 
-        public void UpdateBook(BookDTO book)
+        public void UpdateBook(Book book)
         {
-            ibookContainersDAL.UpdateBook(book);
+            BookDTO bookDTO = BookToBookDTO(book);
+            ibookContainersDAL.UpdateBook(bookDTO);
         }
 
-        public void AddBook(BookDTO book)
+        public void AddBook(Book book)
         {
-            int authorID = ibookContainersDAL.GetAuthorByName(book.author.Firstname, book.author.Lastname).AuthorID;
-            ibookContainersDAL.AddBook(book, authorID);
+            BookDTO bookDTO = BookToBookDTO(book);
+            int authorID = ibookContainersDAL.GetAuthorByName(bookDTO.author.Firstname, bookDTO.author.Lastname).AuthorID;
+            ibookContainersDAL.AddBook(bookDTO, authorID);
         }
         public List<AuthorDTO> SearchAuthorByName(string firstname)
         {
@@ -50,9 +59,10 @@ namespace BusinessLibrary.Containers
             return ibookContainersDAL.SearchBookByTitle(title);
         }
 
-        public void DeleteBook(long ISBN)
+        public void DeleteBook(Book book)
         {
-            ibookContainersDAL.DeleteBook(ISBN);
+            BookDTO bookDTO = BookToBookDTO(book);
+            ibookContainersDAL.DeleteBook(bookDTO);
         }
     }
 }

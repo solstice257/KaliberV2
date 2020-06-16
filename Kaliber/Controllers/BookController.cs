@@ -29,6 +29,12 @@ namespace Kaliber.Controllers
             bookContainer = new BookContainer(ibookContainerDAL);
         }
 
+        private Book BookViewToBook(BookView bookView)
+        {
+            Book book = new Book(bookView.ISBN, bookView.Title, bookView.author.AuthorID, bookView.author.Firstname, bookView.author.Preposition, bookView.author.Lastname, bookView.author.City, bookView.author.Year_of_birth, bookView.author.Year_of_death, bookView.publisher, bookView.Subtitle, bookView.Category, bookView.Book_Root, bookView.Cover_Picture, bookView.Year_of_publication);
+            return book;
+        }
+
         public IActionResult Index()
         {
             var booklist = bookContainer.GetAllBooks();
@@ -39,7 +45,7 @@ namespace Kaliber.Controllers
         {
             return View();
         }
-        public IActionResult BoekWijzigen(BookDTO book)
+        public IActionResult BoekWijzigen(BookView book)
         {
             return View(book);
         }
@@ -59,20 +65,37 @@ namespace Kaliber.Controllers
             return Json(new { books = bookContainer.SearchBookByTitle(title) });
         }
 
-        public IActionResult AddBook(BookDTO book)
+        public IActionResult AddBook(BookView bookView)
         {
+            Book book = BookViewToBook(bookView);
             bookContainer.AddBook(book);
             return View("BookToevoegen");
         }
 
-        public IActionResult DeleteBook(long ISBN)
+        public IActionResult DeleteOrUpdate(BookView book, string submitbutton)
         {
-            //bookContainer.DeleteBook(ISBN);
+            switch (submitbutton)
+            {
+                case "Update":
+                    return (UpdateBook(book));
+                case "Delete":
+                    return (DeleteBook(book));
+                default:
+                    break;
+            }
             return RedirectToAction("Index");
         }
 
-        public IActionResult UpdateBook(BookDTO book)
+        public IActionResult DeleteBook(BookView bookView)
         {
+            Book book = BookViewToBook(bookView);
+            bookContainer.DeleteBook(book);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult UpdateBook(BookView bookView)
+        {
+            Book book = BookViewToBook(bookView);
             bookContainer.UpdateBook(book);
             return RedirectToAction("Index");
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using Interfaces.DTO;
 
@@ -24,6 +25,21 @@ namespace BusinessLibrary.Models
             this.City = authorDTO.City;
             this.Year_of_birth = authorDTO.Year_of_birth;
             this.Year_of_death = authorDTO.Year_of_death;
+        }
+
+        public Author(int ID, string firstname, string prep, string lastname, string city, int birth, int death )
+        {
+            this.AuthorID = ID;
+            this.Firstname = firstname;
+            this.Preposition = prep;
+            this.Lastname = lastname;
+            this.City = city;
+            this.Year_of_birth = birth;
+            this.Year_of_death = death;
+        }
+        public Author()
+        {
+
         }
     }
     

@@ -1,5 +1,6 @@
 ﻿using System;
 using BusinessLibrary.Containers;
+using BusinessLibrary.Models;
 using Interfaces.DTO;
 using KaliberTests.Stubs;
 
@@ -9,14 +10,12 @@ namespace TestApp
     {
         static void Main(string[] args)
         {
-            BookDTO book = new BookDTO();
-            book.author = new AuthorDTO();
-            book.author.Firstname = "";
-            book.author.Lastname = "";
             BookContainerStub bookContainerStub = new BookContainerStub();
-            Interfaces.IBookContainersDAL ibookContainersDAL = bookContainerStub;
-            var bookContainer = new BookContainer(ibookContainersDAL);
+            BookContainer bookContainer = new BookContainer(bookContainerStub);
 
+            bookContainerStub.Testvalue = true;
+            Book book = new Book();
+            book.author = new Author();
             bookContainer.AddBook(book);
         }
     }

@@ -14,6 +14,16 @@ namespace KaliberTests.RepositoryTests
     [TestClass]
     public class BookContainerTests
     {
+        BookContainerStub bookContainerStub;
+        BookContainer bookContainer;
+
+        [TestInitialize]
+        public void Testinitialize()
+        {
+            bookContainerStub = new BookContainerStub();
+            bookContainer = new BookContainer(bookContainerStub);
+        }
+
         [TestMethod]
         public void GetAllBooksTest()
         {
@@ -29,36 +39,115 @@ namespace KaliberTests.RepositoryTests
         }
 
         [TestMethod]
-
         public void AddBookSucces()
         {
-            int AuthorID = 0;
-            BookDTO book = new BookDTO();
-            book.author = new AuthorDTO();
-            BookContainerStub bookContainerStub = new BookContainerStub();
-            Interfaces.IBookContainersDAL ibookContainersDAL = bookContainerStub;
-            bookContainerStub.bookRow = new BookRow(book.ISBN, book.Title, AuthorID, book.publisher, book.Subtitle, book.Category, book.Year_of_publication);
-            var bookContainer = new BookContainer(ibookContainersDAL);
-
+            bookContainerStub.Testvalue = true;
+            Book book = new Book();
+            book.author = new Author();
             bookContainer.AddBook(book);
-
             Assert.IsNotNull(bookContainerStub.bookRow);
         }
 
         [TestMethod]
-
         public void AddBookFailed()
         {
-            BookDTO book = new BookDTO();
-            book.author = new AuthorDTO();
-            BookContainerStub bookContainerStub = new BookContainerStub();
-            Interfaces.IBookContainersDAL ibookContainersDAL = bookContainerStub;
-            bookContainerStub.bookRow = null;
-            var bookContainer = new BookContainer(ibookContainersDAL);
-
+            bookContainerStub.Testvalue = false;
+            Book book = new Book();
+            book.author = new Author();
             bookContainer.AddBook(book);
-
             Assert.IsNull(bookContainerStub.bookRow);
+        }
+
+        [TestMethod]
+        public void DeleteBookSucces()
+        {
+            bookContainerStub.Testvalue = true;
+            Book book = new Book();
+            book.author = new Author();
+            bookContainer.DeleteBook(book);
+            Assert.IsNull(bookContainerStub.bookRow);
+        }
+
+        [TestMethod]
+        public void DeleteBookFailed()
+        {
+            bookContainerStub.Testvalue = false;
+            Book book = new Book();
+            book.author = new Author();
+            bookContainer.DeleteBook(book);
+            Assert.IsNotNull(bookContainerStub.bookRow);
+        }
+
+        [TestMethod]
+        public void UpdateBookSucces()
+        {
+            bookContainerStub.Testvalue = true;
+            BookRow bookRow = new BookRow();
+            Book book = new Book();
+            book.author = new Author();
+            bookContainer.UpdateBook(book);
+            Assert.ReferenceEquals(bookRow, bookContainerStub.bookRow);
+        }
+
+        [TestMethod]
+        public void UpdateBookFailed()
+        {
+            bookContainerStub.Testvalue = false;
+            BookRow bookRow = new BookRow();
+            Book book = new Book();
+            book.author = new Author();
+            bookContainer.UpdateBook(book);
+            Assert.AreNotEqual(bookRow, bookContainerStub.bookRow);
+        }
+
+        [TestMethod]
+        public void SearchAuthorByNameSucces()
+        {
+            bookContainerStub.Testvalue = true;
+            string name = "";
+            Assert.IsNotNull(bookContainer.SearchAuthorByName(name));
+        }
+
+        [TestMethod]
+        public void SearchAuthorByNameFailed()
+        {
+            bookContainerStub.Testvalue = false;
+            string name = "";
+            Assert.IsNull(bookContainer.SearchAuthorByName(name));
+        }
+
+        [TestMethod]
+        public void SearchBookByTitleSucces()
+        {
+            bookContainerStub.Testvalue = false;
+            string name = "";
+            Assert.IsNull(bookContainer.SearchBookByTitle(name));
+        }
+
+        [TestMethod]
+        public void SearchBookByTitleFailed()
+        {
+            bookContainerStub.Testvalue = false;
+            string name = "";
+            Assert.IsNull(bookContainer.SearchBookByTitle(name));
+        }
+
+        [TestMethod]
+        public void BookToBookDTOSucces()
+        {
+            Book book = new Book();
+            book.author = new Author();
+            Assert.IsNotNull(bookContainer.BookToBookDTO(book));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException),
+        "Invalid use of stub code. First set field existsReturnValue.")]
+        public void BookToBookDTOFailed()
+        {
+            Book book = null;
+            book.author = new Author();
+            Assert.IsNull(bookContainer.BookToBookDTO(book));
         }
     }
 }

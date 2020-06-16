@@ -29,6 +29,7 @@ namespace Interfaces.DTO
             this.Cover_Picture = cover_picture;
             this.Year_of_publication = year_of_publication;
         }
+
         public BookDTO()
         {
 

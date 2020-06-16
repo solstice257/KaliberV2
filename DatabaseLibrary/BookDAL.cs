@@ -19,7 +19,6 @@ namespace DatabaseLibrary
 
         public List<AuthorDTO> SearchAuthorByName(string AuthorFN)
         {
-            try
             {
                 connection.Open();
                 SqlCommand cmd = connection.CreateCommand();
@@ -37,10 +36,6 @@ namespace DatabaseLibrary
                 connection.Close();
                 rdr.Close();
                 return results;
-            }
-            catch (InvalidOperationException)
-            {
-                throw;
             }
         }
 
@@ -108,13 +103,13 @@ namespace DatabaseLibrary
             connection.Close();
         }
 
-        public void DeleteBook(long ISBN)
+        public void DeleteBook(BookDTO book)
         {
             connection.Open();
 
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandText = "DELETE FROM Ebooks WHERE ISBN = @ISBN";
-            cmd.Parameters.AddWithValue("@ISBN", ISBN);
+            cmd.Parameters.AddWithValue("@ISBN", book.ISBN);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
 
