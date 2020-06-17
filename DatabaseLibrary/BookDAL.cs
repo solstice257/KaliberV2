@@ -9,7 +9,7 @@ using System.Transactions;
 
 namespace DatabaseLibrary
 {
-    public class BookDAL : IBookContainersDAL
+    public class BookDAL : IBookContainersDAL, IAuthorContainerDAL
     {
         SqlConnection connection;
         public BookDAL()
@@ -81,6 +81,26 @@ namespace DatabaseLibrary
             rdr.Close();
             connection.Close();
             return null;
+        }
+
+        public void AddAuthor(AuthorDTO author)
+        {
+            connection.Open();
+
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "INSERT INTO Author(Firstname, Preposition, Lastname, City, Year_of_birth, Year_of_death) VALUES (@Firstname, @Preposition, @Lastname, @City, @Year_of_birth, @Year_of_death)";
+            cmd.Parameters.AddWithValue("@Firstname", author.Firstname );
+            cmd.Parameters.AddWithValue("@Preposition", String.IsNullOrWhiteSpace(author.Preposition) ? (object)DBNull.Value : (object)author.Preposition);
+            cmd.Parameters.AddWithValue("@Lastname", String.IsNullOrWhiteSpace(author.Lastname) ? (object)DBNull.Value : (object)author.Lastname); 
+            cmd.Parameters.AddWithValue("@City", String.IsNullOrWhiteSpace(author.City) ? (object)DBNull.Value : (object)author.City);
+            if(author.Year_of_birth == 0){ cmd.Parameters.AddWithValue("@Year_of_birth", DBNull.Value);}
+            else{cmd.Parameters.AddWithValue("@Year_of_birth", author.Year_of_birth);}
+            if (author.Year_of_death == 0){cmd.Parameters.AddWithValue("@Year_of_death", DBNull.Value);}
+            else{cmd.Parameters.AddWithValue("@Year_of_death", author.Year_of_death);}
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+
+            connection.Close();
         }
 
         public void AddBook(BookDTO book, int AuthorID)

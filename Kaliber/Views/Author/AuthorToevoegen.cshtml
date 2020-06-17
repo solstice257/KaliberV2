@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "AuthorToevoegen";
+}
+
+@model Kaliber.Models.AuthorView
+
+<h1>AuthorToevoegen</h1>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Index</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="col-6" style="float:left;">
+        @using (Html.BeginForm("AddAuthor", "Author", FormMethod.Post, new { enctype = "multiplart/form-data" }))
+        {
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <th colspan="2" align="center">Book</th>
+                </tr>
+                <tr>
+                    <td>Voornaam: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Firstname)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tussenvoegsel: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Preposition)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Achternaam: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Lastname)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stad: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.City)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Geboortejaar: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Year_of_birth)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sterftejaar: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Year_of_death)
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Toevoegen" /></td>
+                </tr>
+
+            </table>
+        }
+    </div>
+    </body>
+</html>

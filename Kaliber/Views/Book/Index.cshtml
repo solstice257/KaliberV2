@@ -15,7 +15,7 @@
     <br />
         @foreach (var book in Model)
         {
-            <button style="float:left;" type="submit" class="col-3 Boek" onclick="location.href='@Url.Action("BoekWijzigen", "Book", new { id = book.Title })'">Boek ISBN: @book.ISBN Boek titel: @book.Title </button>
+            <button style="float:left;" type="submit" class="col-3 Boek" onclick="location.href='@Url.Action("BoekWijzigen", "Book", new { id = book.Title })'">Boek ISBN: @book.ISBN <br /> Boek titel: @book.Title </button>
         }
 </body>
 </html>

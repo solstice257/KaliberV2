@@ -16,6 +16,7 @@ using Interfaces;
 using BusinessLibrary.Containers;
 using DatabaseLibrary;
 using BusinessLibrary.Models;
+using Interfaces.Interface;
 
 namespace Kaliber
 {
@@ -36,6 +37,7 @@ namespace Kaliber
 
             services.AddMvc();
             services.AddSingleton<IBookContainersDAL, BookDAL>();
+            services.AddSingleton<IAuthorContainerDAL, BookDAL>();
             //services.AddSingleton<BookContainer, BookContainer>();
 
 

@@ -446,3 +446,4 @@ D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\staticwebassets\Kaliber.StaticW
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.dll
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.pdb
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.genruntimeconfig.cache
+D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Author\AuthorToevoegen.cshtml.g.cs
