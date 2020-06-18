@@ -5,8 +5,8 @@
 
 @model Kaliber.Models.AuthorView
 
-<h1>AuthorToevoegen</h1>
-
+<h2>Auteur toevoegen</h2>
+<br />
 <!DOCTYPE html>
 
 <html>
@@ -20,10 +20,7 @@
     <div class="col-6" style="float:left;">
         @using (Html.BeginForm("AddAuthor", "Author", FormMethod.Post, new { enctype = "multiplart/form-data" }))
         {
-            <table cellpadding="0" cellspacing="0" style="width:320px;">
-                <tr>
-                    <th colspan="2" align="center">Book</th>
-                </tr>
+            <table cellpadding="0" cellspacing="0" style="width:320px; border-spacing:">
                 <tr>
                     <td>Voornaam: </td>
                     <td>

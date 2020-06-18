@@ -99,20 +99,5 @@ namespace Kaliber.Controllers
             bookContainer.UpdateBook(book);
             return RedirectToAction("Index");
         }
-
-        public void SaveImagePath(BookView book, IFormFile Cover_Photo)
-        {
-            if (Cover_Photo != null)
-            {
-                string filePath = $"{env.ContentRootPath}/images/{Cover_Photo.FileName}";
-
-                using (var stream = System.IO.File.Create(filePath))
-                {
-                    Cover_Photo.CopyTo(stream);
-                }
-                book.Cover_Picture = $"~/images/{Cover_Photo.FileName}";
-
-            }
-        }
     }
 }
