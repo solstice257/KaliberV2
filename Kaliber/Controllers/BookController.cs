@@ -20,12 +20,10 @@ namespace Kaliber.Controllers
 {
     public class BookController : Controller
     {
-        IWebHostEnvironment env;
         private readonly BookContainer bookContainer;
 
-        public BookController(IWebHostEnvironment e, IBookContainersDAL ibookContainerDAL)
+        public BookController(IBookContainersDAL ibookContainerDAL)
         {
-            env = e;
             bookContainer = new BookContainer(ibookContainerDAL);
         }
 

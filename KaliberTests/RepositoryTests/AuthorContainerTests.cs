@@ -38,5 +38,15 @@ namespace KaliberTests.RepositoryTests
             authorContainer.AddAuthor(author);
             Assert.IsNull(authorContainerStub.authorRow);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException),
+        "Invalid use of stub code. First set field existsReturnValue.")]
+        public void AddAuthorError()
+        {
+            Author author = new Author();
+            authorContainer.AddAuthor(author);
+            Assert.IsNull(authorContainerStub.authorRow);
+        }
     }
 }

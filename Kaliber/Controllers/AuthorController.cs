@@ -19,7 +19,7 @@ namespace Kaliber.Controllers
 
         public AuthorController(IAuthorContainerDAL iauthorContainerDAL)
         {
-            bookController = new BookController(null, null);
+            bookController = new BookController(null);
             authorContainer = new AuthorContainer(iauthorContainerDAL);
         }
 

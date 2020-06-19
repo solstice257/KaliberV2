@@ -29,8 +29,6 @@ namespace KaliberTests.RepositoryTests
         {
             List<Book> Books = new List<Book>();
             List<BookDTO> Booklist = new List<BookDTO>();
-            var bookContainerStub = new BookContainerStub();
-            var bookContainer = new BookContainer(bookContainerStub);
             bookContainerStub.GetAllBooksReturnValue = Booklist;
 
             var GetAllBooksResult = bookContainer.GetAllBooks();
@@ -59,6 +57,17 @@ namespace KaliberTests.RepositoryTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(NullReferenceException),
+        "Invalid use of stub code. First set field existsReturnValue.")]
+        public void AddBookError()
+        {
+            Book book = new Book();
+            book.author = new Author();
+            bookContainer.AddBook(book);
+            Assert.IsNull(bookContainerStub.bookRow);
+        }
+
+        [TestMethod]
         public void DeleteBookSucces()
         {
             bookContainerStub.Testvalue = true;
@@ -72,6 +81,17 @@ namespace KaliberTests.RepositoryTests
         public void DeleteBookFailed()
         {
             bookContainerStub.Testvalue = false;
+            Book book = new Book();
+            book.author = new Author();
+            bookContainer.DeleteBook(book);
+            Assert.IsNotNull(bookContainerStub.bookRow);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException),
+        "Invalid use of stub code. First set field existsReturnValue.")]
+        public void DeleteBookError()
+        {
             Book book = new Book();
             book.author = new Author();
             bookContainer.DeleteBook(book);
@@ -101,6 +121,18 @@ namespace KaliberTests.RepositoryTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(NullReferenceException),
+        "Invalid use of stub code. First set field existsReturnValue.")]
+        public void UpdateBookError()
+        {
+            BookRow bookRow = new BookRow();
+            Book book = new Book();
+            book.author = new Author();
+            bookContainer.UpdateBook(book);
+            Assert.AreNotEqual(bookRow, bookContainerStub.bookRow);
+        }
+
+        [TestMethod]
         public void SearchAuthorByNameSucces()
         {
             bookContainerStub.Testvalue = true;
@@ -109,9 +141,19 @@ namespace KaliberTests.RepositoryTests
         }
 
         [TestMethod]
+
         public void SearchAuthorByNameFailed()
         {
             bookContainerStub.Testvalue = false;
+            string name = "";
+            Assert.IsNull(bookContainer.SearchAuthorByName(name));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException),
+        "Invalid use of stub code. First set field existsReturnValue.")]
+        public void SearchAuthorByNameError()
+        {
             string name = "";
             Assert.IsNull(bookContainer.SearchAuthorByName(name));
         }
@@ -128,6 +170,15 @@ namespace KaliberTests.RepositoryTests
         public void SearchBookByTitleFailed()
         {
             bookContainerStub.Testvalue = false;
+            string name = "";
+            Assert.IsNull(bookContainer.SearchBookByTitle(name));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException),
+        "Invalid use of stub code. First set field existsReturnValue.")]
+        public void SearchBookByTitleError()
+        {
             string name = "";
             Assert.IsNull(bookContainer.SearchBookByTitle(name));
         }
