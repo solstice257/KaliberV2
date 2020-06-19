@@ -127,7 +127,9 @@
 
                     button.addEventListener("click", function () {
                         document.getElementById("Firstname").value = this.firstChild.textContent;
-                        document.getElementById("Prep").value = this.firstChild.nextSibling.nextSibling.textContent;
+                        if (this.firstChild.nextSibling.nextSibling != this.lastChild) {
+                            document.getElementById("Prep").value = this.firstChild.nextSibling.nextSibling.textContent;
+                        }
                         document.getElementById("Lastname").value = this.lastChild.textContent;
                     });
 

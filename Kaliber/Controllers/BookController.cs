@@ -57,7 +57,7 @@ namespace Kaliber.Controllers
 
         public JsonResult SearchAuthorByName(string firstname)
         {
-            return Json(new { authors = bookContainer.SearchAuthorByName(firstname) });
+            return Json(new { authors = bookContainer.SearchAuthorByName(firstname)});
         }
 
         public JsonResult SearchBookByTitle(string title)

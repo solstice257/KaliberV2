@@ -23,7 +23,6 @@ namespace BusinessLibrary.Containers
 
         public void AddAuthor(Author author)
         {
-
             AuthorDTO authorDTO = AuthorToAuthorDTO(author);
             iauthorContainerDAL.AddAuthor(authorDTO);
         }

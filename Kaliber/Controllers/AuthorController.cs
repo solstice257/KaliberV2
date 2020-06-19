@@ -14,10 +14,12 @@ namespace Kaliber.Controllers
 {
     public class AuthorController : Controller
     {
+        BookController bookController;
         private readonly AuthorContainer authorContainer;
 
         public AuthorController(IAuthorContainerDAL iauthorContainerDAL)
         {
+            bookController = new BookController(null, null);
             authorContainer = new AuthorContainer(iauthorContainerDAL);
         }
 
@@ -36,11 +38,11 @@ namespace Kaliber.Controllers
             return View();
         }
 
-        public IActionResult AddAuthor(AuthorView authorView)
+        public void AddAuthor(AuthorView authorView)
         {
             Author author = AuthorViewToAuthor(authorView);
             authorContainer.AddAuthor(author);
-            return View();
+            bookController.BookToevoegen();
         }
     }
 }
