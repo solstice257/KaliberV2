@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Kaliber.Validator
 {
-    public class BoekValidator
+    public class BookValidator
     {
         public string Result { get; private set; }
 

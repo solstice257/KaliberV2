@@ -23,11 +23,11 @@ namespace Kaliber.Controllers
     public class BookController : Controller
     {
         BookContainer bookContainer;
-        BoekValidator boekValidator;
+        BookValidator boekValidator;
 
         public BookController(IBookContainersDAL ibookContainerDAL)
         {
-            boekValidator = new BoekValidator();
+            boekValidator = new BookValidator();
             bookContainer = new BookContainer(ibookContainerDAL);
         }
 

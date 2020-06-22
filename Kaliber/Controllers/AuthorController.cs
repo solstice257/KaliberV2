@@ -7,6 +7,7 @@ using BusinessLibrary.Models;
 using Interfaces;
 using Interfaces.Interface;
 using Kaliber.Models;
+using Kaliber.Validator;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,10 +16,12 @@ namespace Kaliber.Controllers
     public class AuthorController : Controller
     {
         BookController bookController;
-        private readonly AuthorContainer authorContainer;
+        AuthorContainer authorContainer;
+        AuthorValidator authorValidator;
 
         public AuthorController(IAuthorContainerDAL iauthorContainerDAL)
         {
+            authorValidator = new AuthorValidator();
             bookController = new BookController(null);
             authorContainer = new AuthorContainer(iauthorContainerDAL);
         }
@@ -38,11 +41,21 @@ namespace Kaliber.Controllers
             return View();
         }
 
-        public void AddAuthor(AuthorView authorView)
+        public IActionResult AddAuthor(AuthorView authorView)
         {
-            Author author = AuthorViewToAuthor(authorView);
-            authorContainer.AddAuthor(author);
-            bookController.BookToevoegen();
+            if (authorValidator.ValidateFirstname(authorView.Firstname)|| authorValidator.ValidatePreposition(authorView.Preposition)||authorValidator.ValidateLastname(authorView.Lastname)||authorValidator.ValidateCity(authorView.City)||authorValidator.ValidateYearofbirth(authorView.Year_of_birth)||authorValidator.ValidateYearofdeath(authorView.Year_of_death))
+            {
+                Author author = AuthorViewToAuthor(authorView);
+                authorContainer.AddAuthor(author);
+                ModelState.AddModelError("Succes", "de auteur is toegevoegd!");
+                return View("../Book/BoekToevoegen");
+            }
+            else
+            {
+                ModelState.AddModelError("Alert", authorValidator.Result);
+                return View("../Book/BoekToevoegen");
+            }
+
         }
     }
 }
