@@ -14,16 +14,20 @@ using BusinessLibrary.Containers;
 using BusinessLibrary.Models;
 using Interfaces;
 using Interfaces.DTO;
-
+using Kaliber.Validator;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace Kaliber.Controllers
 {
     public class BookController : Controller
     {
-        private readonly BookContainer bookContainer;
+        BookContainer bookContainer;
+        BoekValidator boekValidator;
 
         public BookController(IBookContainersDAL ibookContainerDAL)
         {
+            boekValidator = new BoekValidator();
             bookContainer = new BookContainer(ibookContainerDAL);
         }
 
@@ -45,6 +49,7 @@ namespace Kaliber.Controllers
         }
         public IActionResult BoekWijzigen(BookView book)
         {
+            ViewData["BookView"] = book;
             return View(book);
         }
 
@@ -58,16 +63,26 @@ namespace Kaliber.Controllers
             return Json(new { authors = bookContainer.SearchAuthorByName(firstname)});
         }
 
-        public JsonResult SearchBookByTitle(string title)
+        public JsonResult SearchBookByISBN(string ISBN)
         {
-            return Json(new { books = bookContainer.SearchBookByTitle(title) });
+            long lgISBN = Convert.ToInt64(ISBN);
+            return Json(new { books = bookContainer.SearchBookByISBN(lgISBN)});
         }
 
         public IActionResult AddBook(BookView bookView)
         {
-            Book book = BookViewToBook(bookView);
-            bookContainer.AddBook(book);
-            return View("BookToevoegen");
+            if (boekValidator.ValidateISBN(bookView.ISBN) || boekValidator.ValidateTitle(bookView.Title))
+            {
+                Book book = BookViewToBook(bookView);
+                bookContainer.AddBook(book);
+                ModelState.AddModelError("Succes", "Boek is toegevoegd");
+                return View("BookToevoegen");
+            }
+            else
+            {
+                ModelState.AddModelError("Alert", boekValidator.Result);
+                return View("BookToevoegen");
+            }
         }
 
         public IActionResult DeleteOrUpdate(BookView book, string submitbutton)
@@ -93,9 +108,19 @@ namespace Kaliber.Controllers
 
         public IActionResult UpdateBook(BookView bookView)
         {
-            Book book = BookViewToBook(bookView);
-            bookContainer.UpdateBook(book);
-            return RedirectToAction("Index");
+            ViewData["ID"] = bookView.ISBN;
+            if (boekValidator.ValidateTitle(bookView.Title))
+            {
+                Book book = BookViewToBook(bookView);
+                bookContainer.UpdateBook(book);
+                ModelState.AddModelError("Succes", "Boek is aangepast!");
+                return View("BoekWijzigen", bookView);
+            }
+            else
+            {
+                ModelState.AddModelError("Alert", boekValidator.Result);
+                return View("BoekWijzigen", bookView);
+            }
         }
     }
 }

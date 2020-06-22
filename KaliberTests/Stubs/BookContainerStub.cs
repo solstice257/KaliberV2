@@ -89,7 +89,7 @@ namespace KaliberTests.Stubs
             }
         }
 
-        public List<BookDTO> SearchBookByTitle(string title)
+        public List<BookDTO> SearchBookByISBN(long ISBN)
         {
             if (Testvalue == null)
             {

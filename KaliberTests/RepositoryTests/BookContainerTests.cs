@@ -162,16 +162,16 @@ namespace KaliberTests.RepositoryTests
         public void SearchBookByTitleSucces()
         {
             bookContainerStub.Testvalue = false;
-            string name = "";
-            Assert.IsNull(bookContainer.SearchBookByTitle(name));
+            long ISBN = 0;
+            Assert.IsNull(bookContainer.SearchBookByISBN(ISBN));
         }
 
         [TestMethod]
         public void SearchBookByTitleFailed()
         {
             bookContainerStub.Testvalue = false;
-            string name = "";
-            Assert.IsNull(bookContainer.SearchBookByTitle(name));
+            long ISBN = 0;
+            Assert.IsNull(bookContainer.SearchBookByISBN(ISBN));
         }
 
         [TestMethod]
@@ -179,8 +179,8 @@ namespace KaliberTests.RepositoryTests
         "Invalid use of stub code. First set field existsReturnValue.")]
         public void SearchBookByTitleError()
         {
-            string name = "";
-            Assert.IsNull(bookContainer.SearchBookByTitle(name));
+            long ISBN = 0;
+            Assert.IsNull(bookContainer.SearchBookByISBN(ISBN));
         }
 
         [TestMethod]

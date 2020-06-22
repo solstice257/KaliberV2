@@ -39,12 +39,12 @@ namespace DatabaseLibrary
             }
         }
 
-        public List<BookDTO> SearchBookByTitle(string Title)
+        public List<BookDTO> SearchBookByISBN(long ISBN)
         {
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT ISBN, Ebooks.AuthorID, Publisher, Title, Subtitle, Category, Year_of_publication, Firstname, Preposition, Lastname, City, Year_of_birth, Year_of_death FROM Ebooks JOIN Author ON Ebooks.AuthorID = Author.AuthorID WHERE Title LIKE @Title";
-            cmd.Parameters.AddWithValue("@Title", "%" + Title + "%");
+            cmd.CommandText = "SELECT ISBN, Ebooks.AuthorID, Publisher, Title, Subtitle, Category, Year_of_publication, Firstname, Preposition, Lastname, City, Year_of_birth, Year_of_death FROM Ebooks JOIN Author ON Ebooks.AuthorID = Author.AuthorID WHERE ISBN LIKE @ISBN";
+            cmd.Parameters.AddWithValue("@ISBN", "%" + ISBN + "%");
             SqlDataReader rdr = cmd.ExecuteReader();
 
             List<BookDTO> results = new List<BookDTO>();

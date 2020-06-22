@@ -12,6 +12,6 @@ namespace Interfaces
         public void DeleteBook(BookDTO book);
         public List<AuthorDTO> SearchAuthorByName(string AuthorFN);
         public AuthorDTO GetAuthorByName(string AuthorFN, string AuthorLN);
-        public List<BookDTO> SearchBookByTitle(string title);
+        public List<BookDTO> SearchBookByISBN(long ISBN);
     }
 }

@@ -54,9 +54,9 @@ namespace BusinessLibrary.Containers
             return ibookContainersDAL.SearchAuthorByName(firstname);
         }
 
-        public List<BookDTO> SearchBookByTitle(string title)
+        public List<BookDTO> SearchBookByISBN(long ISBN)
         {
-            return ibookContainersDAL.SearchBookByTitle(title);
+            return ibookContainersDAL.SearchBookByISBN(ISBN);
         }
 
         public void DeleteBook(Book book)

@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Index";
 }
 @model List<BusinessLibrary.Models.Book>
 
@@ -12,11 +12,13 @@
 <body>
     <div class="ToppageBoekindex">
         Boekoverzicht
+        <span style="color:red; font-style:oblique; display:block; padding-top:10px;">  @Html.ValidationMessage("Alert") </span>
+        <span style="color:green; font-style:oblique; display:block;"> @Html.ValidationMessage("Succes")</span>
     </div>
     <br />
         @foreach (var book in Model)
         {
-            <button style="float:left;" type="submit" class="col-3 Boek" onclick="location.href='@Url.Action("BoekWijzigen", "Book", new { id = book.Title })'">Boek ISBN: @book.ISBN <br /> Boek titel: @book.Title </button>
+            <button style="float:left;" type="submit" class="col-3 Boek" onclick="location.href='@Url.Action("BoekWijzigen", "Book", new { id = book.ISBN })'">Boek ISBN: @book.ISBN <br /> Boek titel: @book.Title </button>
         }
 </body>
 </html>
