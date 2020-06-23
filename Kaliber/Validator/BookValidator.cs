@@ -15,19 +15,9 @@ namespace Kaliber.Validator
 
         public bool ValidateISBN(long ISBN)
         {
-            Regex regex = new Regex("^[0-9]+$");
-            if (String.IsNullOrEmpty(ISBN.ToString()))
+            if (ISBN.ToString().Length != 13)
             {
-                Result = "Vul eerst een ISBN in!";
-            }
-            else if (ISBN.ToString().Length != 13)
-            {
-                Result = "Dit is geen geldig ISBN! ";
-                return false;
-            }
-            else if (!OnlyNumbers(ISBN.ToString()))
-            {
-                Result = "Je kunt geen letters in je ISBN hebben!";
+                Result = "Er is geen geldig ISBN ingevuld!";
                 return false;
             }
             return true;
@@ -43,6 +33,21 @@ namespace Kaliber.Validator
             return true;
         }
 
+        public bool ValidateAuthor(string firstname)
+        {
+            if (String.IsNullOrEmpty(firstname))
+            {
+                Result = "Een boek moet een auteur hebben!";
+                return false;
+            }
+            else if (!OnlyLetters(firstname))
+            {
+                Result = "Je kunt geen cijfers in je naam hebben!";
+                return false;
+            }
+            return true;
+        }
+
         public bool ValidateCategory(string category)
         {
             if (String.IsNullOrEmpty(category))
@@ -53,13 +58,28 @@ namespace Kaliber.Validator
             else if(!OnlyLetters(category))
             {
                 Result = "Je kunt geen cijfers in je categorie hebben!";
+                return false;
             }
             return true;
         }
 
-        private bool OnlyNumbers(string text)
+        public bool ValidateYear(string year)
         {
-            Regex regex = new Regex("^[0-9]+$");
+            if (String.IsNullOrEmpty(year))
+            {
+                return true;
+            }
+            if (!OnlyNumbers(year))
+            {
+                Result = "Je kunt geen letters in een jaartal zetten!";
+                return false;
+            }
+            return true;
+        }
+
+        public bool OnlyLetters(string text)
+        {
+            Regex regex = new Regex(@"^[a-zA-Z]+$");
             if (regex.IsMatch(text))
             {
                 return true;
@@ -67,9 +87,9 @@ namespace Kaliber.Validator
             return false;
         }
 
-        private bool OnlyLetters(string text)
+        public bool OnlyNumbers(string text)
         {
-            Regex regex = new Regex(@"^[a-zA-Z]+$");
+            Regex regex = new Regex("^[0-9]+$");
             if (regex.IsMatch(text))
             {
                 return true;

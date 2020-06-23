@@ -17,6 +17,11 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
 <body>
+    <div>
+        <span style="color:red; font-style:oblique; display:block; padding-top:10px;">  @Html.ValidationMessage("Alert") </span>
+        <span style="color:green; font-style:oblique; display:block;"> @Html.ValidationMessage("Succes")</span>
+    </div>
+    <br />
     <div class="col-6" style="float:left;">
         @using (Html.BeginForm("AddAuthor", "Author", FormMethod.Post, new { enctype = "multiplart/form-data" }))
         {

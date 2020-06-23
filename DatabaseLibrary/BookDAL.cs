@@ -66,9 +66,17 @@ namespace DatabaseLibrary
             connection.Open();
 
             SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT * FROM Author WHERE Firstname LIKE @Firstname AND Lastname LIKE @Lastname";
+            cmd.CommandText = "SELECT * FROM Author WHERE Firstname = @Firstname AND Lastname = @Lastname";
             cmd.Parameters.AddWithValue("@Firstname", AuthorFN);
+            if(AuthorLN != null)
+            {
             cmd.Parameters.AddWithValue("@Lastname", AuthorLN);
+            }
+            else
+            {
+            cmd.Parameters.AddWithValue("@Lastname", DBNull.Value);
+            }
+
             SqlDataReader rdr = cmd.ExecuteReader();
 
             while (rdr.Read())
@@ -93,10 +101,22 @@ namespace DatabaseLibrary
             cmd.Parameters.AddWithValue("@Preposition", String.IsNullOrWhiteSpace(author.Preposition) ? (object)DBNull.Value : (object)author.Preposition);
             cmd.Parameters.AddWithValue("@Lastname", String.IsNullOrWhiteSpace(author.Lastname) ? (object)DBNull.Value : (object)author.Lastname); 
             cmd.Parameters.AddWithValue("@City", String.IsNullOrWhiteSpace(author.City) ? (object)DBNull.Value : (object)author.City);
-            if(author.Year_of_birth == 0){ cmd.Parameters.AddWithValue("@Year_of_birth", DBNull.Value);}
-            else{cmd.Parameters.AddWithValue("@Year_of_birth", author.Year_of_birth);}
-            if (author.Year_of_death == 0){cmd.Parameters.AddWithValue("@Year_of_death", DBNull.Value);}
-            else{cmd.Parameters.AddWithValue("@Year_of_death", author.Year_of_death);}
+            if(author.Year_of_birth == 0)
+            { 
+                cmd.Parameters.AddWithValue("@Year_of_birth", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Year_of_birth", author.Year_of_birth);
+            }
+            if (author.Year_of_death == 0)
+            {
+                cmd.Parameters.AddWithValue("@Year_of_death", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Year_of_death", author.Year_of_death);
+            }
             cmd.ExecuteNonQuery();
             cmd.Dispose();
 

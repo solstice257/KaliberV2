@@ -13,21 +13,26 @@ namespace Kaliber.Validator
 
         public bool ValidateFirstname(string firstname)
         {
-            if (!OnlyLetters(firstname))
+            if (String.IsNullOrEmpty(firstname))
+            {
+                Result = "Vul een voornaam in!";
+                return false;
+            }
+            else if (!OnlyLetters(firstname))
             {
                 Result = "Je kunt geen cijfers in je voornaam hebben!";
                 return false;
-            }
-            else if (String.IsNullOrEmpty(firstname))
-            {
-                Result = "Vul een voornaam in!";
             }
             return true;
         }
 
         public bool ValidatePreposition(string prep)
         {
-            if (!OnlyLetters(prep))
+            if (String.IsNullOrEmpty(prep))
+            {
+                return true;
+            }
+            else if (!OnlyLetters(prep))
             {
                 Result = "Je kunt geen cijfers in je tussenvoegsel hebben!";
                 return false;
@@ -37,21 +42,25 @@ namespace Kaliber.Validator
 
         public bool ValidateLastname(string lastname)
         {
-            if (!OnlyLetters(lastname))
+            if (String.IsNullOrEmpty(lastname))
+            {
+                return true;
+            }
+            else if (!OnlyLetters(lastname))
             {
                 Result = "Je kunt geen cijfers in je achternaam hebben!";
                 return false;
-            }
-            else if (String.IsNullOrEmpty(lastname))
-            {
-                Result = "Vul een achternaam in!";
             }
             return true;
         }
 
         public bool ValidateCity(string city)
         {
-            if (!OnlyLetters(city))
+            if (String.IsNullOrEmpty(city))
+            {
+                return true;
+            }
+            else if (!OnlyLetters(city))
             {
                 Result = "Je kunt geen getal als stad hebben!";
                 return false;
@@ -59,29 +68,37 @@ namespace Kaliber.Validator
             return true;
         }
 
-        public bool ValidateYearofbirth(int year)
+        public bool ValidateYearofbirth(string year)
         {
-            if (!OnlyNumbers(Convert.ToString(year)))
+            if (String.IsNullOrEmpty(year))
             {
-                Result = "Je kunt geen letters als geboortejaar hebben!";
+                return true;
+            }
+            else if (!OnlyNumbers(year))
+            {
+                Result = "Je kunt geen letters bij het geboortejaar invullen";
                 return false;
             }
             return true;
         }
 
-        public bool ValidateYearofdeath(int year)
+        public bool ValidateYearofdeath(string year)
         {
-            if (!OnlyNumbers(Convert.ToString(year)))
+            if (String.IsNullOrEmpty(year))
             {
-                Result = "Je kunt geen letters als sterftejaar hebben!";
+                return true;
+            }
+            else if (!OnlyNumbers(year))
+            {
+                Result = "Je kunt geen letters bij het sterftejaar invullen";
                 return false;
             }
             return true;
         }
 
-        private bool OnlyNumbers(string text)
+        private bool OnlyLetters(string text)
         {
-            Regex regex = new Regex("^[0-9]+$");
+            Regex regex = new Regex(@"^[a-zA-Z]+$");
             if (regex.IsMatch(text))
             {
                 return true;
@@ -89,9 +106,9 @@ namespace Kaliber.Validator
             return false;
         }
 
-        private bool OnlyLetters(string text)
+        public bool OnlyNumbers(string text)
         {
-            Regex regex = new Regex(@"^[a-zA-Z]+$");
+            Regex regex = new Regex("^[0-9]+$");
             if (regex.IsMatch(text))
             {
                 return true;

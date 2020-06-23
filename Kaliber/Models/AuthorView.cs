@@ -12,7 +12,7 @@ namespace Kaliber.Models
         public string Preposition { get; set; }
         public string Lastname { get; set; }
         public string City { get; set; }
-        public int Year_of_birth { get; set; }
-        public int Year_of_death { get; set; }
+        public string Year_of_birth { get; set; }
+        public string Year_of_death { get; set; }
     }
 }

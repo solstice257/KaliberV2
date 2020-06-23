@@ -28,7 +28,7 @@ namespace Kaliber.Controllers
 
         private Author AuthorViewToAuthor(AuthorView authorView)
         {
-            Author author = new Author(authorView.AuthorID, authorView.Firstname, authorView.Preposition, authorView.Lastname, authorView.City, authorView.Year_of_birth, authorView.Year_of_death);
+            Author author = new Author(authorView.AuthorID, authorView.Firstname, authorView.Preposition, authorView.Lastname, authorView.City, Convert.ToInt32(authorView.Year_of_birth), Convert.ToInt32(authorView.Year_of_death));
             return author;
         }
 
@@ -43,17 +43,17 @@ namespace Kaliber.Controllers
 
         public IActionResult AddAuthor(AuthorView authorView)
         {
-            if (authorValidator.ValidateFirstname(authorView.Firstname)|| authorValidator.ValidatePreposition(authorView.Preposition)||authorValidator.ValidateLastname(authorView.Lastname)||authorValidator.ValidateCity(authorView.City)||authorValidator.ValidateYearofbirth(authorView.Year_of_birth)||authorValidator.ValidateYearofdeath(authorView.Year_of_death))
+            if (authorValidator.ValidateFirstname(authorView.Firstname) && authorValidator.ValidatePreposition(authorView.Preposition) && authorValidator.ValidateLastname(authorView.Lastname) && authorValidator.ValidateCity(authorView.City) && authorValidator.ValidateYearofbirth(authorView.Year_of_birth) && authorValidator.ValidateYearofdeath(authorView.Year_of_death))
             {
                 Author author = AuthorViewToAuthor(authorView);
                 authorContainer.AddAuthor(author);
                 ModelState.AddModelError("Succes", "de auteur is toegevoegd!");
-                return View("../Book/BoekToevoegen");
+                return View("AuthorToevoegen");
             }
             else
             {
                 ModelState.AddModelError("Alert", authorValidator.Result);
-                return View("../Book/BoekToevoegen");
+                return View("AuthorToevoegen");
             }
 
         }

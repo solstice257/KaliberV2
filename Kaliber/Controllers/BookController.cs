@@ -23,17 +23,17 @@ namespace Kaliber.Controllers
     public class BookController : Controller
     {
         BookContainer bookContainer;
-        BookValidator boekValidator;
+        BookValidator bookValidator;
 
         public BookController(IBookContainersDAL ibookContainerDAL)
         {
-            boekValidator = new BookValidator();
+            bookValidator = new BookValidator();
             bookContainer = new BookContainer(ibookContainerDAL);
         }
 
         private Book BookViewToBook(BookView bookView)
         {
-            Book book = new Book(bookView.ISBN, bookView.Title, bookView.author.AuthorID, bookView.author.Firstname, bookView.author.Preposition, bookView.author.Lastname, bookView.author.City, bookView.author.Year_of_birth, bookView.author.Year_of_death, bookView.publisher, bookView.Subtitle, bookView.Category, bookView.Book_Root, bookView.Cover_Picture, bookView.Year_of_publication);
+            Book book = new Book(bookView.ISBN, bookView.Title, bookView.author.AuthorID, bookView.author.Firstname, bookView.author.Preposition, bookView.author.Lastname, bookView.author.City, Convert.ToInt32(bookView.author.Year_of_birth) , Convert.ToInt32(bookView.author.Year_of_death), bookView.publisher, bookView.Subtitle, bookView.Category, bookView.Book_Root, bookView.Cover_Picture, bookView.Year_of_publication);
             return book;
         }
 
@@ -71,7 +71,8 @@ namespace Kaliber.Controllers
 
         public IActionResult AddBook(BookView bookView)
         {
-            if (boekValidator.ValidateISBN(bookView.ISBN) || boekValidator.ValidateTitle(bookView.Title))
+            if (bookValidator.ValidateISBN(bookView.ISBN) && bookValidator.ValidateTitle(bookView.Title) && bookValidator.ValidateCategory(bookView.Category) &&
+                bookValidator.ValidateYear(bookView.Year_of_publication) && bookValidator.ValidateAuthor(bookView.author.Firstname))
             {
                 Book book = BookViewToBook(bookView);
                 bookContainer.AddBook(book);
@@ -80,7 +81,7 @@ namespace Kaliber.Controllers
             }
             else
             {
-                ModelState.AddModelError("Alert", boekValidator.Result);
+                ModelState.AddModelError("Alert", bookValidator.Result);
                 return View("BookToevoegen");
             }
         }
@@ -109,7 +110,7 @@ namespace Kaliber.Controllers
         public IActionResult UpdateBook(BookView bookView)
         {
             ViewData["ID"] = bookView.ISBN;
-            if (boekValidator.ValidateTitle(bookView.Title))
+            if (bookValidator.ValidateTitle(bookView.Title) && bookValidator.ValidateCategory(bookView.Category) && bookValidator.ValidateYear(bookView.Year_of_publication))
             {
                 Book book = BookViewToBook(bookView);
                 bookContainer.UpdateBook(book);
@@ -118,7 +119,7 @@ namespace Kaliber.Controllers
             }
             else
             {
-                ModelState.AddModelError("Alert", boekValidator.Result);
+                ModelState.AddModelError("Alert", bookValidator.Result);
                 return View("BoekWijzigen", bookView);
             }
         }
