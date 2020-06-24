@@ -98,7 +98,7 @@ namespace Kaliber.Validator
 
         private bool OnlyLetters(string text)
         {
-            Regex regex = new Regex(@"^[a-zA-Z]+$");
+            Regex regex = new Regex(@"^[a-z A-Z]*$");
             if (regex.IsMatch(text))
             {
                 return true;
@@ -108,7 +108,7 @@ namespace Kaliber.Validator
 
         public bool OnlyNumbers(string text)
         {
-            Regex regex = new Regex("^[0-9]+$");
+            Regex regex = new Regex("^[0-9 ]*$");
             if (regex.IsMatch(text))
             {
                 return true;

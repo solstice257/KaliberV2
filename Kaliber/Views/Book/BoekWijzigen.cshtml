@@ -16,7 +16,7 @@
 
 @model Kaliber.Models.BookView
 
-<h1>BoekWijzigen</h1>
+
 
 <!DOCTYPE html>
 
@@ -29,6 +29,8 @@
 </head>
 <body>
     <div>
+        <h1>BoekWijzigen</h1>
+
         <span style="color:red; font-style:oblique; display:block; padding-top:10px;">   @Html.ValidationMessage("Alert") </span>
         <span style="color:green; font-style:oblique; display:block;"> @Html.ValidationMessage("Succes")</span>
     </div>
@@ -44,6 +46,7 @@
                 <td>ISBN: </td>
                 <td>
                     @Html.TextBoxFor(m => m.ISBN, new { id = "ISBN", @readonly = "true" })
+                    @Html.HiddenFor(m=> m.author.AuthorID, new { id = "ID" })
                 </td>
             </tr>
             <tr>
@@ -56,12 +59,6 @@
                 <td>Ondertitel: </td>
                 <td>
                     @Html.TextBoxFor(m => m.Subtitle, new { id = "Sub" })
-                </td>
-            </tr>
-            <tr>
-                <td>Auteur ID: </td>
-                <td>
-                    @Html.TextBoxFor(m => m.author.AuthorID, new { id = "ID", @readonly = "true" })
                 </td>
             </tr>
             <tr>

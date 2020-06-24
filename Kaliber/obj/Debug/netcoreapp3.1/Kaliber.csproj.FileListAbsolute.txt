@@ -423,7 +423,6 @@ D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.AssemblyInfo.cs
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.TagHelpers.input.cache
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.TagHelpers.output.cache
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Kaliber.RazorCoreGenerate.cache
-D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Book\BoekPagina.cshtml.g.cs
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Book\BoekWijzigen.cshtml.g.cs
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Book\BookToevoegen.cshtml.g.cs
 D:\Git\KaliberV2\Kaliber\obj\Debug\netcoreapp3.1\Razor\Views\Book\Index.cshtml.g.cs
